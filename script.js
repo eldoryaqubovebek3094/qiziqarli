@@ -145,6 +145,9 @@ function generateQuestions(level) {
             num1 = Math.floor(Math.random() * (Math.pow(10, level) + 1));
             num2 = Math.floor(Math.random() * (Math.pow(10, level) + 1));
             operator = basicOperators[Math.floor(Math.random() * basicOperators.length)];
+            if (operator === "-" && num1 < num2) {
+                [num1, num2] = [num2, num1];
+              }
         } else {
             // 4-dan boshlab 1-lik, 10-lik, 100-lik, 1000-lik sonlar bilan savollar
             const base = Math.pow(10, Math.floor((level - 4) / 2)); // 1, 10, 100, 1000
