@@ -210,3 +210,20 @@ button:hover {
     text-decoration: none;
     border-radius: 5px;
   }
+
+  #loginForm input{
+    width: 250px;
+    padding: 10px;
+    font-size: 1em;
+    margin-left: 10px;
+    border: 2px solid #4caf50;
+    border-radius: 5px;
+  } 
+   #signupForm input{
+    width: 250px;
+    padding: 10px;
+    font-size: 1em;
+    margin-left: 10px;
+    border: 2px solid #4caf50;
+    border-radius: 5px;
+  }
