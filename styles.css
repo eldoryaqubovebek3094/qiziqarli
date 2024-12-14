@@ -1,0 +1,212 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f7fa;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #4caf50;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #4caf50;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #2196f3;
+}
+
+.question {
+    margin: 15px 0;
+    font-size: 1.2em;
+}
+
+input {
+    width: 60px;
+    padding: 10px;
+    font-size: 1em;
+    margin-left: 10px;
+    border: 2px solid #4caf50;
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 1.5em;
+}
+
+.feedback {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #d32f2f;
+}
+
+.hidden {
+    display: none;
+}
+
+.feedback {
+    margin-top: 20px;
+    font-size: 1.1em;
+}
+
+.qavs {
+   
+    background-color: #4caf50;
+}
+
+/* Boshqa CSS kodlari ... */
+
+.modal {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.correct{
+    color: green;
+    font-weight: bold;
+
+}
+
+.incorrect{
+    color: rgb(255, 0, 119);
+    font-weight: bold;
+}
+
+.question-number{
+
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 2px solid #4caf50;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+}
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #4caf50;
+    
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #4caf50;
+
+    color: #991899; /* Matn rangi */
+    font-size: 22px; /* Matn o'lchami */
+    border-radius: 15px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 15px;
+}
+.footer a {
+    color: #991899; /* Matn rangi */
+    text-decoration: none; /* Chizish yo'q */
+    font-weight: bold; /* Qalin matn */
+    font-size: 16px; /* Matn o'lchami */
+    transition: color 0.3s ease; /* Rang o'zgarishi uchun animatsiya */
+}
+
+.footer a:hover {
+    color: #d5006d; /* Hover holatidagi rang */
+    text-decoration: underline; /* Hover holatida chizish */
+}
+
+.footer img{
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    /* margin-top: 20px; */
+    background-color: #4caf50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
