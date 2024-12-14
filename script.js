@@ -30,9 +30,7 @@ function generateQuestions(level) {
 
     // 1-3 bosqichlar uchun
     if (level < 4) {
-      // num1 = Math.floor(Math.random() * (Math.pow(10, level) + 1));
-      // num2 = Math.floor(Math.random() * (Math.pow(10, level) + 1));
-      // operator = basicOperators[Math.floor(Math.random() * basicOperators.length)];
+
 
       num1 = Math.floor(Math.random() * (Math.pow(10, level) + 1));
       num2 = Math.floor(Math.random() * (Math.pow(10, level) + 1));
@@ -48,6 +46,14 @@ function generateQuestions(level) {
       num1 = Math.floor(Math.random() * (base + 1));
       num2 = Math.floor(Math.random() * (base + 1));
       operator = allOperators[Math.floor(Math.random() * allOperators.length)];
+
+      if (operator === "-" && num1 < num2) {
+        [num1, num2] = [num2, num1];
+      }
+
+      if (operator === "/" && num1 < num2) {
+        [num1, num2] = [num2, num1];
+      }
     }
 
     // Bo'linish uchun num2 nol bo'lmasligini ta'minlash
