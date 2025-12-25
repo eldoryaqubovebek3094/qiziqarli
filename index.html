@@ -1,26 +1,16 @@
+
+
+
 <!DOCTYPE html>
 <html lang="uz">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qiziqarli Matematika</title>
     <link rel="stylesheet" href="styles-2.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script>
-        // Prevent some default keys (lightweight protection)
-        document.addEventListener("contextmenu", function (event) {
-            event.preventDefault();
-        });
 
-        document.addEventListener("keydown", function (event) {
-            if (event.key === "F12") {
-                event.preventDefault();
-            }
-        });
-    </script>
 </head>
-
 <body>
     <div class="header">
         <span>Bilimdon Bolajon!</span>
@@ -69,7 +59,7 @@
 
     <!-- Footer -->
     <div class="footer">
-        <p>Powered by
+        <p>Powered by 
             <a href="https://github.com/eldoryaqubovebek3094">
                 <img src="https://avatars.githubusercontent.com/u/148733238?v=4" alt="">
                 Yaqubov Eldor
@@ -78,7 +68,7 @@
     </div>
 
     <script>
-        (function () {
+        (function(){
             const table = document.getElementById('times-table');
             if (!table) return;
             const thead = document.createElement('thead');
@@ -100,7 +90,7 @@
 
     <script>
         // Theme toggle: persists in localStorage
-        (function () {
+        (function(){
             const btn = document.getElementById('theme-toggle');
             const darkClass = 'dark-theme';
             function applyTheme(dark) {
@@ -121,5 +111,4 @@
 
     <script src="script.js"></script>
 </body>
-
 </html>

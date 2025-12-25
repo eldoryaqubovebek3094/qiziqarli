@@ -1,29 +1,3 @@
-<<<<<<< HEAD
-=======
-document.addEventListener("contextmenu", function (event) {
-  event.preventDefault();
-});
-
-document.addEventListener("keydown", function (event) {
-  if (event.key === "F12" || event.key === "Escape") {
-    event.preventDefault();
-  }
-});
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        event.preventDefault();
-    }
-});
-
-const modal = document.getElementById("myModal");
-// const btn = document.getElementById("openModal");
-const span = document.getElementsByClassName("close")[0];
-
-
-
-
->>>>>>> d06f821b2ab7a10305761135363c908f134f77db
 let currentLevel = 1;
 const totalLevels = 10;
 const questionsPerLevel = 10;
@@ -33,16 +7,11 @@ const allOperators = ["+", "-", "*"];
 
 function computeAnswer(n1, op, n2) {
   switch (op) {
-    case "+":
-      return n1 + n2;
-    case "-":
-      return n1 - n2;
-    case "*":
-      return n1 * n2;
-    case "/":
-      return n2 !== 0 ? n1 / n2 : null;
-    default:
-      return null;
+    case "+": return n1 + n2;
+    case "-": return n1 - n2;
+    case "*": return n1 * n2;
+    case "/": return n2 !== 0 ? n1 / n2 : null;
+    default: return null;
   }
 }
 
@@ -80,7 +49,7 @@ function updateProgressList() {
   if (!list) return;
   const arr = loadCompletedLevels();
   list.innerHTML = '';
-  arr.sort((a,b)=>a-b).forEach(l => {
+  arr.sort((a, b) => a - b).forEach(l => {
     const li = document.createElement('li');
     li.textContent = `Bosqich ${l}`;
     list.appendChild(li);
@@ -92,29 +61,25 @@ function generateQuestions(level) {
   for (let i = 0; i < questionsPerLevel; i++) {
     let num1, num2, operator;
 
-    // Levels 1-3: digits, 2-digit, 3-digit respectively; only + and -
     if (level === 1) {
-      num1 = Math.floor(Math.random() * 9) + 1; // 1..9
+      num1 = Math.floor(Math.random() * 9) + 1;
       num2 = Math.floor(Math.random() * 9) + 1;
       operator = basicOperators[Math.floor(Math.random() * basicOperators.length)];
     } else if (level === 2) {
-      num1 = Math.floor(Math.random() * 90) + 10; // 10..99
+      num1 = Math.floor(Math.random() * 90) + 10;
       num2 = Math.floor(Math.random() * 90) + 10;
       operator = basicOperators[Math.floor(Math.random() * basicOperators.length)];
     } else if (level === 3) {
-      num1 = Math.floor(Math.random() * 900) + 100; // 100..999
+      num1 = Math.floor(Math.random() * 900) + 100;
       num2 = Math.floor(Math.random() * 900) + 100;
       operator = basicOperators[Math.floor(Math.random() * basicOperators.length)];
     } else {
-      // Level 4 and above: allow multiplication as well
-      // Scale numbers with level to keep difficulty increasing
       const scale = Math.pow(10, Math.min(3, Math.floor((level - 4) / 2) + 1));
       num1 = Math.floor(Math.random() * (9 * scale)) + 1;
       num2 = Math.floor(Math.random() * (9 * scale)) + 1;
       operator = allOperators[Math.floor(Math.random() * allOperators.length)];
     }
 
-    // Avoid negative results for subtraction
     if (operator === "-" && num1 < num2) [num1, num2] = [num2, num1];
 
     let question = `${num1} ${operator} ${num2} = ?`;
@@ -146,59 +111,8 @@ function checkAnswer(index) {
       statusSpan.innerHTML = "✅";
       statusSpan.style.color = "green";
     } else {
-<<<<<<< HEAD
       statusSpan.innerHTML = "❌";
       statusSpan.style.color = "red";
-=======
-      userAnswers.push({
-        question: q.question,
-        userAnswer,
-        correctAnswer: q.answer,
-      });
-      if (userAnswer === q.answer) {
-        correctAnswers++;
-      }
-    }
-  });
-
-  const resultDiv = document.getElementById("result");
-  const feedbackDiv = document.getElementById("feedback");
-  feedbackDiv.innerHTML = "";
-  feedbackDiv.classList.remove("hidden");
-
-  if (!allAnswered) {
-    // alert("Iltimos, hamma kataklarga javoblarni yozing!");
-  
-
-    
-        modal.style.display = "block";
-    
-
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    return;
-  }
-
-  if (correctAnswers === questionsPerLevel) {
-    currentLevel++;
-    resultDiv.innerHTML =
-      "<h1 class=\"correct\">Hammasi to'g'ri! Keyingi bosqichga o'tdingiz! 🎉🎉🎉 </h1>";
-    if (currentLevel <= totalLevels) {
-      generateQuestions(currentLevel);
-      displayQuestions();
-      document.getElementById("level").innerText = currentLevel;
-    } else {
-      resultDiv.innerHTML =
-        "Tabriklaymiz! Siz barcha bosqichlarni muvaffaqiyatli o'tdingiz!";
->>>>>>> d06f821b2ab7a10305761135363c908f134f77db
     }
   } else {
     statusSpan.innerHTML = "";
@@ -207,17 +121,17 @@ function checkAnswer(index) {
 
 window.addEventListener("DOMContentLoaded", () => {
   const quizContainer = document.getElementById('quiz-container');
-  if (!quizContainer) return; // Only initialize on quiz page
+  if (!quizContainer) return;
 
   const submitBtn = document.getElementById("submit");
   const resultDiv = document.getElementById("result");
   const timerEl = document.getElementById('timer');
   const showAnswersBtn = document.getElementById('show-answers');
+  const levelEl = document.getElementById("level");
 
   updateProgressList();
   generateQuestions(currentLevel);
   displayQuestions();
-  const levelEl = document.getElementById("level");
   if (levelEl) levelEl.innerText = currentLevel;
 
   function startTimer() {
@@ -240,7 +154,6 @@ window.addEventListener("DOMContentLoaded", () => {
       let allAnswered = true;
       let correctAnswers = 0;
 
-<<<<<<< HEAD
       questions.forEach((q, index) => {
         const el = document.getElementById(`answer${index}`);
         const userAnswer = el ? parseFloat(el.value) : NaN;
@@ -287,12 +200,5 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-    startTimer();
-  });
-=======
-
-
-// Dastlabki misollarni generatsiya qilish
-generateQuestions(currentLevel);
-displayQuestions();
->>>>>>> d06f821b2ab7a10305761135363c908f134f77db
+  startTimer();
+});
