@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>JSON Editor — Savollar qo'shish</title>
+  <link rel="stylesheet" href="styles.css">
+      <script>
+        // Prevent some default keys (lightweight protection)
+        document.addEventListener("contextmenu", function (event) {
+            event.preventDefault();
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "F12") {
+                event.preventDefault();
+            }
+        });
+    </script>
+</head>
+<body>
+  <div class="header">JSON Editor — Savollar qo'shish
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+
+  <main class="container">
+    <h1>Savollar va masalalarni qo'lda qo'shish</h1>
+
+    <section>
+      <label for="file-select">Fayl tanlang:</label>
+      <select id="file-select">
+        <option value="test.json">test.json (Multiple-choice)</option>
+        <option value="problems.json">problems.json (Word problems)</option>
+        <option value="games.json">games.json (Speed game)</option>
+        <option value="comparison.json">comparison.json (Taqqoslash)</option>
+      </select>
+
+      <label for="grade-select">Sinf (grade):</label>
+      <select id="grade-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+
+      <button id="load-btn" class="button">Yuklash</button>
+    </section>
+
+    <section id="editor-area" style="display:none; margin-top:16px;">
+      <h2 id="editor-title"></h2>
+
+      <div id="entries-list"></div>
+
+      <hr />
+      <h3>Yangi element qo'shish</h3>
+      <form id="add-form"></form>
+      <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+        <button id="add-btn" class="button">Qo'shish</button>
+        <button id="download-btn" class="button">JSON-ni yuklab olish</button>
+        <button id="copy-btn" class="button">JSON-ni clipboardga nusxalash</button>
+      </div>
+
+      <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; align-items:center;">
+        <input id="server-url" placeholder="Server URL (masalan http://localhost:8001/save-json)" style="flex:1; padding:8px;" />
+        <input id="server-token" placeholder="Save token (to'g'ri server token)" style="width:220px; padding:8px;" />
+        <button id="save-server-btn" class="button">Serverga saqlash</button>
+      </div>
+
+      <div id="note" style="margin-top:12px; color:var(--muted); font-size:0.95em;">
+        Eslatma: Bu editor brauzer ichida JSONni tahrirlash uchun mo'ljallangan. Agar lokal server (Node) ishga tushgan bo'lsa, <strong>Serverga saqlash</strong> tugmasi yordamida fayl loyiha papkasiga yozilishi mumkin (token bilan himoyalangan).
+      </div>
+    </section>
+
+    <a href="/" class="button" style="margin-top:18px; display:inline-block;">🏠 Bosh sahifaga qaytish</a>
+  </main>
+
+  <div class="footer">
+    <p>Powered by <a href="https://github.com/eldoryaqubovebek3094">Yaqubov Eldor</a></p>
+  </div>
+
+  <script src="editor.js"></script>
+  <script>
+    (function(){
+      const btn = document.getElementById('theme-toggle');
+      const saved = localStorage.getItem('theme');
+      if(saved === 'dark') document.documentElement.classList.add('dark-theme');
+      btn && btn.addEventListener('click', ()=>{
+        document.documentElement.classList.toggle('dark-theme');
+        localStorage.setItem('theme', document.documentElement.classList.contains('dark-theme') ? 'dark' : 'light');
+      });
+    })();
+  </script>
+</body>
+</html>

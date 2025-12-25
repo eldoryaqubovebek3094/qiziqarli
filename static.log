@@ -1,0 +1,7 @@
+nohup: ignoring input
+::1 - - [24/Dec/2025 19:19:33] "GET /editor.html HTTP/1.1" 200 -
+::1 - - [24/Dec/2025 19:19:33] "GET /styles.css HTTP/1.1" 200 -
+::1 - - [24/Dec/2025 19:19:33] "GET /editor.js HTTP/1.1" 200 -
+::1 - - [24/Dec/2025 19:19:35] code 404, message File not found
+::1 - - [24/Dec/2025 19:19:35] "GET /favicon.ico HTTP/1.1" 404 -
+::1 - - [24/Dec/2025 19:26:43] "HEAD /index.html HTTP/1.1" 200 -

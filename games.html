@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Matematik O'yinlar</title>
+        <script>
+        // Prevent some default keys (lightweight protection)
+        document.addEventListener("contextmenu", function (event) {
+            event.preventDefault();
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "F12") {
+                event.preventDefault();
+            }
+        });
+    </script>
+  </head>
+  <body>
+    <div class="header">
+      Bilimdon Bolajon! — O'yinlar
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌓</button>
+    </div>
+
+    <main class="container">
+      <a href="/" class="button">Bosh sahifaga qaytish</a>
+
+      <h1>Matematik O'yinlar (1-4 sinf)</h1>
+
+      <section>
+        <h2>O'yin Turini Tanlang</h2>
+        <div class="controls">
+          <button onclick="startSpeedChallenge(1)" class="btn-grade">1-sinf Tezlik</button>
+          <button onclick="startSpeedChallenge(2)" class="btn-grade">2-sinf Tezlik</button>
+          <button onclick="startSpeedChallenge(3)" class="btn-grade">3-sinf Tezlik</button>
+          <button onclick="startSpeedChallenge(4)" class="btn-grade">4-sinf Tezlik</button>
+        </div>
+      </section>
+
+      <section id="game-section" style="display:none;">
+        <h2>Tezlik O'yini</h2>
+        <div style="text-align: center; margin: 20px 0;">
+          <p style="font-size: 1.4em;"><strong>Vaqt: <span id="game-timer">30</span>s</strong> | <strong>Puan: <span id="game-score">0</span></strong></p>
+        </div>
+
+        <div id="game-question" style="font-size: 1.5em; text-align: center; padding: 20px; background: var(--muted-bg); border-radius: 5px; margin-bottom: 20px;"></div>
+
+        <div style="text-align: center;">
+          <input type="number" id="game-answer" placeholder="Javob kiriting" style="width: 120px; padding: 10px; font-size: 1.2em; border: 2px solid var(--primary); border-radius: 5px;">
+          <button onclick="submitGameAnswer()" class="button" style="margin-left: 10px;">OK</button>
+        </div>
+
+        <div id="game-result" class="hidden" style="margin-top: 20px; padding: 15px; background: #e7f3fe; border-radius: 5px; font-size: 1.1em;"></div>
+      </section>
+    </main>
+
+    <div class="footer">
+      <p>Powered by <a href="https://github.com/eldoryaqubovebek3094"><img src="https://avatars.githubusercontent.com/u/148733238?v=4" alt="Yaqubov Eldor">Yaqubov Eldor</a></p>
+    </div>
+
+    <script src="games.js"></script>
+    <script>
+      (function(){
+        const btn = document.getElementById('theme-toggle');
+        const saved = localStorage.getItem('theme');
+        if(saved === 'dark') document.documentElement.classList.add('dark-theme');
+        btn && btn.addEventListener('click', ()=>{
+          document.documentElement.classList.toggle('dark-theme');
+          localStorage.setItem('theme', document.documentElement.classList.contains('dark-theme') ? 'dark' : 'light');
+        });
+      })();
+    </script>
+  </body>
+</html>

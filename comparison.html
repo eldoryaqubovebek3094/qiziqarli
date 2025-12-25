@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Taqqoslash O'yini</title>
+        <script>
+        // Prevent some default keys (lightweight protection)
+        document.addEventListener("contextmenu", function (event) {
+            event.preventDefault();
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "F12") {
+                event.preventDefault();
+            }
+        });
+    </script>
+  </head>
+  <body>
+    <div class="header">
+      Bilimdon Bolajon! — Taqqoslash
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌓</button>
+    </div>
+
+    <main class="container">
+      <a href="/" class="button">Bosh sahifaga qaytish</a>
+
+      <h1>Taqqoslash O'yini (1-4 sinf)</h1>
+
+      <section>
+        <h2>Sinfi Tanlang</h2>
+        <div class="controls">
+          <button onclick="loadComparison(1)" class="btn-grade">1-sinf</button>
+          <button onclick="loadComparison(2)" class="btn-grade">2-sinf</button>
+          <button onclick="loadComparison(3)" class="btn-grade">3-sinf</button>
+          <button onclick="loadComparison(4)" class="btn-grade">4-sinf</button>
+        </div>
+      </section>
+
+      <section id="comparison-section" style="display:none;">
+        <h2>Taqqoslash: <span id="comparison-grade">1-sinf</span></h2>
+        <p id="comparison-info">Ikkita raqamni taqqoslang va to'g'ri belgini tanlang: &lt; (kichik), &gt; (katta), yoki = (teng)</p>
+        
+        <div id="comparison-questions" style="margin-top: 30px;"></div>
+
+        <div class="controls">
+          <button id="submit-comparison" onclick="submitComparison()" class="button">Javoblarni Tekshirish</button>
+        </div>
+
+        <div id="comparison-result" class="hidden"></div>
+      </section>
+    </main>
+
+    <div class="footer">
+      <p>Powered by <a href="https://github.com/eldoryaqubovebek3094"><img src="https://avatars.githubusercontent.com/u/148733238?v=4" alt="Yaqubov Eldor">Yaqubov Eldor</a></p>
+    </div>
+
+    <script src="comparison.js"></script>
+    <script>
+      (function(){
+        const btn = document.getElementById('theme-toggle');
+        const saved = localStorage.getItem('theme');
+        if(saved === 'dark') document.documentElement.classList.add('dark-theme');
+        btn && btn.addEventListener('click', ()=>{
+          document.documentElement.classList.toggle('dark-theme');
+          localStorage.setItem('theme', document.documentElement.classList.contains('dark-theme') ? 'dark' : 'light');
+        });
+      })();
+    </script>
+  </body>
+</html>

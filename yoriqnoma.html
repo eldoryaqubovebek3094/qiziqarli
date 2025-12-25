@@ -4,65 +4,297 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css">
-    <title>Matematik Viktorina</title>
-    <style>
-      
-      h1,
-      h2 {
-        color: #333;
-      }
-      p {
-        line-height: 1.6;
-      }
-      .instructions {
-        background-color: #e7f3fe;
-        border-left: 6px solid #2196f3;
-        padding: 10px;
-        margin: 20px 0;
-      }
-    </style>
+    <title>Yo'riqnoma — Saytdan qanday foydalanish</title>
+        <script>
+        // Prevent some default keys (lightweight protection)
+        document.addEventListener("contextmenu", function (event) {
+            event.preventDefault();
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "F12") {
+                event.preventDefault();
+            }
+        });
+    </script>
   </head>
   <body>
-    <div class="header">Bilimdon Bolajon!</div>
-
-    <div class="container"><a href="/" class="button">Bosh sahifaga qaytish</a>
-
-
-    <h1>Matematik Viktorina</h1>
-    <div class="instructions">
-      <p>
-        Bu viktorinada siz turli darajadagi matematik savollarga javob berasiz.
-        Har bir darajada sizga 10 ta savol beriladi.
-      </p>
-        <span>Ishlash sharti:</span>
-       <p>
-        1) 1 + 2 = ? <input type="number"><br>
-        2) 3 + 4 = ? <input type="number"><br> 
-       </p>
-       <span>Bo'sh katakga javobingizni kiriting va pastga qarab shunday davom eting.</span>
-
-      <p>
-        1-3 darajalarda faqat qo'shish va ayirish amallari, 4-darajadan boshlab
-        esa qo'shish, ayirish, ko'paytirish va bo'lish amallari beriladi.
-      </p>
-      <p>
-        Har bir savolni diqqat bilan o'qing va javoblarni to'g'ri kiritishga
-        harakat qiling!
-      </p>
-        <p>
-            Barcha kataklarni to'ldiring va javoblarni tekshiring.
-        </p>
-      <p>
-       <button>Javoblarni Tekshirish</button> tugmasini bosing va kiritgan
-        javoblaringiz bilan solishtiring va sizga qaysi misolda qanday javob
-        qilganingiz haqida ma'lumotlar beriladi.
-      </p>
+    <div class="header">
+      Bilimdon Bolajon!
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌓</button>
     </div>
+
+    <main class="container">
+
+      <h1>Yo'riqnoma: sayt va barcha funksiyalar (ipidan ignasigacha)</h1>
+
+      <section class="instructions">
+        <h2>1. Maqsad</h2>
+        <p>
+          Bu yo'riqnoma saytning barcha funksiyalarini qanday ishlatishni bosqichma-bosqich
+          ko'rsatadi: Asosiy Quiz, Testlar, Masalalar, O'yinlar va Taqqoslash sahifalarini,
+          daraja tanlash, savollarga javob yozish, javoblarni tekshirish va natijani tushunish.
+        </p>
+      </section>
+
+      <section>
+        <h2>2. Saytning asosiy sahifalari</h2>
+        <p>Sayt turli xil test formatlarini taqdim etadi. Har biri o'z maqsadi bilan:</p>
+
+        <h3>📖 Qo'llanma (Bu sahifa)</h3>
+        <p><strong>Maqsadi:</strong> Saytni qanday ishlatishni tushuntirish.</p>
+
+        <h3>📊 Asosiy Quiz (Bosh sahifa)</h3>
+        <p>
+          <strong>Maqsadi:</strong> 10 ta bosqichda o'sib boruvchi qiyinlikda misol yechish. 
+          <br><strong>Qanday ishlaydi:</strong> 1-3 bosqichda faqat qo'shish (+) va ayirish (-), 4-bosqichdan ko'paytirishni (×) qo'shiladi.
+          <br><strong>Vaqt:</strong> 60 soniya vaqt beriladi.
+          <br><strong>Raqamlar:</strong> Bosqich orttirib borganda sonlar kattalaishadi (1-bosqich: 1-9, 10-bosqich: 1000 dan yuqori).
+          <br><strong>Qachon ishlatish:</strong> Kundalik mashq va rivojlantirish uchun.
+        </p>
+
+        <h3>✏️ Testlar (test.html)</h3>
+        <p>
+          <strong>Maqsadi:</strong> Multiple-choice formatida testlar — javobning to'g'ri variantini tanlash.
+          <br><strong>Qanday ishlaydi:</strong> 
+          <ol>
+            <li>Sinf tanlang (1-4).</li>
+            <li>Har bir savol uchun 4 ta javob variantı ko'rsatiladi, bitta to'g'ri.</li>
+            <li>Radio tugmasini bosib to'g'ri javobni tanlang.</li>
+            <li>"Javoblarni Tekshirish" tugmasini bosing.</li>
+          </ol>
+          <br><strong>Qachon ishlatish:</strong> Test huquqida bilimini tekshirish uchun.
+        </p>
+
+        <h3>🧮 Masalalar (problems.html)</h3>
+        <p>
+          <strong>Maqsadi:</strong> So'zli masalalarni yechish (misol: "Ali 3 ta olma sotdi, 2 ta qoldi...").
+          <br><strong>Qanday ishlaydi:</strong> 
+          <ol>
+            <li>Sinf tanlang (1-4).</li>
+            <li>Masalani o'qiylik va uni raqamli ifodaga o'tkazing.</li>
+            <li>Hisoblang va javobni raqam shaklida kiriting.</li>
+            <li>"Javoblarni Tekshirish" tugmasini bosing.</li>
+          </ol>
+          <br><strong>Qachon ishlatish:</strong> O'qish tilini rivojlantirish va masalalarni yechish uchun.
+        </p>
+
+        <h3>🎮 O'yinlar (games.html) — Tezlik O'yini</h3>
+        <p>
+          <strong>Maqsadi:</strong> 30 soniya ichida imkon qadar ko'p misolni tez yechish.
+          <br><strong>Qanday ishlaydi:</strong> 
+          <ol>
+            <li>Sinf tanlang (1-4).</li>
+            <li>30 soniyali taymer boshlanadi.</li>
+            <li>Har bir savol uchun javobni kiriting va "OK" bosing.</li>
+            <li>Har bir to'g'ri javob uchun +10 puan olasiz.</li>
+            <li>Vaqt tugaganda xulosa va o'z puan ko'rsatiladi.</li>
+          </ol>
+          <br><strong>Qachon ishlatish:</strong> Tezlik va aql-idrok konini rivojlantirish uchun.
+        </p>
+
+        <h3>⚖️ Taqqoslash (comparison.html)</h3>
+        <p>
+          <strong>Maqsadi:</strong> Ikkita raqamni taqqoslash: kichik (&lt;), teng (=), yoki katta (&gt;) belgisini tanlash.
+          <br><strong>Qanday ishlaydi:</strong> 
+          <ol>
+            <li>Sinf tanlang (1-4).</li>
+            <li>Ikkita raqamni ko'ring. Masalan: 5 ? 10</li>
+            <li>To'g'ri belgini tugmacheni bosib tanlang (&lt;, =, yoki &gt;).</li>
+            <li>Tugma ranglanadi, qoidat tanlash davom etadi.</li>
+            <li>"Javoblarni Tekshirish" tugmasini bosing — barcha natijalar ko'rsatiladi.</li>
+          </ol>
+          <br><strong>Qachon ishlatish:</strong> Raqamlarni taqqoslash qobiliyatini rivojlantirish uchun.
+        </p>
+
+        <h3>📚 Qiziqarli faktlar (blog.html)</h3>
+        <p>
+          <strong>Maqsadi:</strong> Matematika haqida qiziqarli faktlar, hikoyalar va o'rganish metodlari.
+          <br><strong>Qanday ishlaydi:</strong> Sahifani o'qib, qiziqarli ma'lumotlarni bilib oling. 
+          <br><strong>Tarkibi:</strong>
+          <ul>
+            <li>Qiziqarli Faktlar — matematika haqida g'alati va hayratlanarli faktlar.</li>
+            <li>Qisqa Hikoya — hisoblash haqida tavsiya.</li>
+            <li>O'rganish Metodlari — tezroq va osonroq ta'lim usullari.</li>
+            <li>Yangi Manbalar — foydalanish uchun qo'shimcha resurslar.</li>
+          </ul>
+          <br><strong>Qachon ishlatish:</strong> Motivatsiya va matematikaga interesini oshirish uchun.
+        </p>
+      </section>
+
+      <section>
+        <h2>3. Qanday boshlash (Bosh sahifadagi Quiz)</h2>
+        <ol>
+          <li><strong>Bosh sahifaga kiriting</strong> — navigatsiya tugmalaridan "Bosh sahifaga qaytish" ni bosing yoki asosiy sahifani oching.</li>
+          <li>Asosiy sahifadagi <strong>Daraja: 1</strong> raqamiga e'tibor bering — u hozirgi darajani ko'rsatadi.</li>
+          <li>Sahifaning o'rtasida sizga 10 ta savol (hozirgi daraja uchun) ko'rsatiladi.</li>
+          <li>Har bir savol yonida bo'sh <strong>katakcha (input)</strong> bo'ladi — javobni shu yerga yozing.</li>
+          <li>Yuqori qismda <strong>Vaqt</strong> ko'rsatiladi. Vaqt tugaganda savollar avtomatik tekshiriladi.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>4. Savolni qanday yechish — qadamlar</h2>
+        <p>Har bir misolni yechish uchun quyidagi amallarni bajaring:</p>
+        <ol>
+          <li><strong>Diqqat bilan o'qing:</strong> misolni ikki marta o'qing — amal va sonlarni aniqlang.</li>
+          <li><strong>Oddiy holatga keltiring:</strong> agar misol so'zli bo'lsa, uni oddiy raqamli ifodaga o'tkazing (masalan, "3 ta olma + 2 ta olma" → 3 + 2).</li>
+          <li><strong>Kerak bo'lsa rasm chizing:</strong> kichik rasmlar yoki nuqtalar bilan masalani vizualizatsiya qiling (bolalar uchun juda foydali).</li>
+          <li><strong>Hisobni bajaring:</strong> qo'shish, ayirish yoki ko'paytirishni bajaring. Misol: 4 × 3 = 12.</li>
+          <li><strong>Natijani inputga kiriting:</strong> bo'sh katakka toza raqam sifatida yozing (masalan: 12).</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>5. Javoblarni tekshirish</h2>
+        <ol>
+          <li>Hammasini to'ldirgach, pastdagi <strong>Javoblarni Tekshirish</strong> tugmasini bosing.</li>
+          <li>Sistem har bir javobni tekshiradi va natijani quyidagi tarzda ko'rsatadi:
+            <ul>
+              <li><span class="correct">Yashil ✓</span> — to'g'ri javoblar.</li>
+              <li><span class="incorrect">Qizil ✗</span> — noto'g'ri javoblar (sistema to'g'ri javobni ham ko'rsatadi).</li>
+            </ul>
+          </li>
+          <li>Agar <em>Javoblarni Ko'rsatish</em> funksiyasi yoqilgan bo'lsa, barcha to'g'ri natijalar ko'rsatiladi.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>6. Natijani tushunish va keyingi qadamlar</h2>
+        <p>
+          - Agar siz 10 ta savoldan kamida 7 tasini to'g'ri bajargan bo'lsangiz, darajangizni tugatdingiz va tizim avtomatik ravishda darajani belgilab beradi yoki sizga keyingi darajani taklif qiladi.
+        </p>
+        <p>
+          - Har bir darajani tugatganingizda, tizim natijangizni <strong>Yechilgan bosqichlar</strong> ro'yxatiga saqlaydi. Bu progress panelida (chap tomonda) ko'rinadi.
+        </p>
+      </section>
+
+      <section>
+        <h2>7. Vaqt va navbat</h2>
+        <p>
+          Har bir quiz uchun sahifa yuqori qismida vaqt ko'rsatiladi (masalan: 60s). Vaqt tugaganda qolgan savollar avtomatik tekshiriladi va natija ko'rsatiladi.
+        </p>
+      </section>
+
+      <section>
+        <h2>8. Maslahatlar (tez va samarali)</h2>
+        <ul>
+          <li>Har bir savolni 10-20 soniya ichida yechishga harakat qiling.</li>
+          <li>Bo'sh kataklarga qo'l bilan yozayotgandek — toza raqam kiriting, oxirida ortiqcha joy qoldirmang.</li>
+          <li>Agar noto'g'ri javob topsangiz, tizimning ko'rsatmasiga qarab xatoni aniqlang va keyingi savolga o'ting.</li>
+          <li>Ko'paytirish jadvali (o'ng tomonda) bilan tanishasiz — uni qo'llanib ko'paytirishni tezroq bajarish mumkin.</li>
+          <li>Bir kunning ichida bir-ikki bosqichni bajaring — shoshilmang.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>9. Tez-tez so'raladigan savollar (FAQ)</h2>
+        <dl>
+          <dt>Savollar ketma-ketligi o'zgarmaydimi?</dt>
+          <dd>Har bir daraja va sahifa uchun savollar avtomatik ravishda tasodifiy tartibda beriladi — har safar yangi kombinatsiya ko'rsatiladi.</dd>
+
+          <dt>Progress saqlanadimi?</dt>
+          <dd>Ha, asosiy sahifadagi Quiz uchun progress brauzerning <em>localStorage</em>ida saqlanadi; sahifani yangilaganingizda ham u ko'rinadi.</dd>
+
+          <dt>Qaysi sahifani ishlatishni boshlamaliman?</dt>
+          <dd>Agar siz boshi bo'lsangiz, <strong>Bosh sahifadagi asosiy Quiz</strong>dan boshlang va bosqich-bosqich o'ting. Keyin <strong>Testlar</strong>, <strong>Masalalar</strong>, <strong>Taqqoslash</strong> va <strong>O'yinlar</strong>ni sinab ko'ring.</dd>
+
+          <dt>Har bir sahifada vaqt bor emasmi?</dt>
+          <dd>Bosh sahifadagi Quiz va Tezlik O'yini vaqt bilan ishlaydi. Testlar, Masalalar va Taqqoslash — vaqt cheklashadi emas, lekin tez javob berish adat qilish uchun bu savollar ham tez yechilishi kerak.</dd>
+
+          <dt>Noto'g'ri javobdan keyin qanday qilishim kerak?</dt>
+          <dd>Tizim siz to'g'ri javobni ko'rsatadi. Masalani qayta o'qing, xatoni topib aniqlang va keyingi savolga o'ting. Keyin shu masalani qayta sinab ko'ring.</dd>
+
+          <dt>Ko'paytirishni men bilmayapman. Qanday qilaman?</dt>
+          <dd>Ko'paytirishni tushunish uchun <strong>Qiziqarli faktlar</strong> sahifasini oching yoki bosqichni 1-3 ga orqaga tushirib qo'shish va ayirishni mashq qiling.</dd>
+
+          <dt>Daraja 10 ga yetdim, keyingi narsa yo'qmi?</dt>
+          <dd>Hazir 10 daraja bor. Siz bosqichlarni qayta yechishingiz mumkin yoki boshqa sahifalarni (Testlar, Masalalar, Taqqoslash, O'yinlar) sinab ko'ring.</dd>
+        </dl>
+      </section>
+
+      <section>
+        <h2>10. Muammolarni bartaraf etish</h2>
+        <ul>
+          <li><strong>Tugma bosilganda hech narsa bo'lmasa:</strong> sahifani yangilang va barcha javoblarni qayta kiriting.</li>
+          <li><strong>Agar sahifa timerni ko'rsatmasa:</strong> brauzer konsolini (F12) tekshiring yoki boshqa brauzerda sinab ko'ring.</li>
+          <li><strong>Agar progress saqlanmasa:</strong> brauzer localStorage yoqilganligini tekshiring va private mode ishlatmang.</li>
+          <li><strong>JSON fayllari topilmasa (404 xatosi):</strong> local server ishlab turibotligini tekshiring.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>11. Misollar (amalga oshirish)</h2>
+        
+        <p>
+          <strong>Asosiy Quiz uchun misol:</strong> Ekranda <strong>2 × 3 = ?</strong> savoli bo'lsa,
+          <br>1) 2 va 3 ni ko'paytiring — natija 6; 
+          <br>2) bo'sh katakka <strong>6</strong> yozing; 
+          <br>3) barcha savollarni to'ldirib, <strong>Javoblarni Tekshirish</strong> tugmasini bosing.
+          <br>Natija: "✓ To'g'ri!" yoki "✗ Xato. To'g'ri javob: 6" ko'rsatiladi.
+        </p>
+
+        <p>
+          <strong>Taqqoslash o'yini uchun misol:</strong> Ekranda <strong>7 ? 5</strong> ko'rsatilsa,
+          <br>1) 7 kattami, kichikmi yoki tengmi 5 ga? 
+          <br>2) 7 > 5 ekanligini bilib, <strong>&gt;</strong> tugmasini bosing — tugma ranglanadi; 
+          <br>3) Keyingi raqamlarni ko'ring yoki "Javoblarni Tekshirish" bosing.
+          <br>Natija: "✓ 7 > 5 to'g'ri!" ko'rsatiladi.
+        </p>
+
+        <p>
+          <strong>Testlar uchun misol:</strong> 
+          <br>Savol: "3 + 5 = ?", 
+          <br>Variantlar: A) 6, B) 8, C) 9, D) 10.
+          <br>To'g'ri javob — B) 8, shuning uchun B variantni tanlang va tugmasini bosing.
+        </p>
+
+        <p>
+          <strong>Masalalar uchun misol:</strong> 
+          <br>Masala: "Ali 5 ta tanga bor. 2 ta sotdi. Nechtasi qoldi?"
+          <br>1) Masalani o'qing: 5 ta bor, 2 ta sotdi.
+          <br>2) Raqamli ifoda: 5 - 2 = ?
+          <br>3) Hisoblang: 3 ta qoladi.
+          <br>4) Input ga <strong>3</strong> kiriting va tugmasini bosing.
+        </p>
+
+        <p>
+          <strong>Tezlik O'yini uchun misol:</strong> 
+          <br>30 soniya boshlanadi. Savol: "2 + 3 = ?"
+          <br>1) Javobni kiriting: <strong>5</strong>
+          <br>2) "OK" bosing → +10 puan.
+          <br>3) Keyingi savol tezda ko'rsatiladi. Vaqt tugaganda xulosa ko'rsatiladi.
+        </p>
+      </section>
+
+      <section>
+        <h2>🎓 Oxirgi maslahat</h2>
+        <p>
+          <strong>Kundalik mashq qilib, bir-ikki bosqichni bajaring.</strong> Shoshilmang — asta-sekin rivojlanish eng yaxshi usul.
+          Agar biror savol qiyin bo'lsa, uning 2-3 marta sinab ko'ring. Sabr va intizom — matematika o'rganishning kalitidir!
+        </p>
+      </section>
+
+      <a href="/" class="button">🏠 Bosh sahifaga qaytish</a>
+
+    </main>
+    
 
     <div class="footer">
-        <p>Powered by <a href="https://github.com/eldoryaqubovebek3094"><img src="https://avatars.githubusercontent.com/u/148733238?v=4" alt="">Yaqubov Eldor</a></p>
+      <p>Powered by <a href="https://github.com/eldoryaqubovebek3094"><img src="https://avatars.githubusercontent.com/u/148733238?v=4" alt="Yaqubov Eldor">Yaqubov Eldor</a></p>
     </div>
-    <script src="script.js"></script>
 
+    <script>
+      (function(){
+        const btn = document.getElementById('theme-toggle');
+        const saved = localStorage.getItem('theme');
+        if(saved === 'dark') document.documentElement.classList.add('dark-theme');
+        btn && btn.addEventListener('click', ()=>{
+          document.documentElement.classList.toggle('dark-theme');
+          localStorage.setItem('theme', document.documentElement.classList.contains('dark-theme') ? 'dark' : 'light');
+        });
+      })();
+    </script>
   </body>
 </html>
+

@@ -1,0 +1,50 @@
+{
+  "1": [
+    {"problem": "Ali 3 ta qanday bor. Unga opasi 2 ta qanday berdi. Endi Ali nechta qanday bor?", "answer": 5},
+    {"problem": "Daraxtda 6 ta qush bor edi. 2 tasi uchib ketdi. Endi nechta qush bor?", "answer": 4},
+    {"problem": "Maloyka 4 ta rasm chizdi. Yana 3 ta chizdi. Jami nechta rasm chizdi?", "answer": 7},
+    {"problem": "Do'stlashda 8 ta o'yinchoq bor edi. 3 tasi yo'qoldi. Nechta o'yinchoq qoldi?", "answer": 5},
+    {"problem": "Sarvarda 7 ta kitob bor. Yana 2 ta kitob qo'shildi. Jami nechta kitob bor?", "answer": 9},
+    {"problem": "Bag'da 5 ta gul bor edi. Yana 4 ta gul o'stirildi. Jami nechta gul bor?", "answer": 9},
+    {"problem": "Savatda 10 ta tulli bor edi. Davronbek 6 ta tulli yedi. Nechta tulli qoldi?", "answer": 4},
+    {"problem": "Oqjan 2 ta shar bor. Jonibek unga 5 ta shar berdi. Jami nechta shar bor?", "answer": 7},
+    {"problem": "Stolidagi 9 ta karandash bor edi. Ulardan 4 tasi ishlatilib ketdi. Nechta karandash qoldi?", "answer": 5},
+    {"problem": "Taomi 3 ta pecheni yedi. Yana 5 ta pecheni yedi. Jami nechta pecheni yedi?", "answer": 8}
+  ],
+  "2": [
+    {"problem": "Fermer 12 ta olma pishirib tergdi. Ertasi 8 ta olma tergdi. Jami nechta olma tergdi?", "answer": 20},
+    {"problem": "Maktabda 25 ta bolasi bor. Ulardan 10 tasi ko'chaga chiqdi. Nechta bolasi qoldi?", "answer": 15},
+    {"problem": "Savdo do'konida 3 dona quti bor. Har bir qutida 4 ta qanday bor. Jami nechta qanday bor?", "answer": 12},
+    {"problem": "20 ta marmar 4 ta qizga teng qilib berdi. Har bir qiz nechta marmar oldi?", "answer": 5},
+    {"problem": "Restauranda 15 ta stol bor. Har bir stolda 2 ta odam o'tiriski. Jami nechta odam bor?", "answer": 30},
+    {"problem": "Kitob do'konida 18 ta adabiy kitob va 12 ta qalamli kitob bor. Jami nechta kitob bor?", "answer": 30},
+    {"problem": "Avtobusda 45 ta o'rindiq bor. Ulardan 30 tasi ishg'al qilindi. Nechta o'rindiq bo'sh?", "answer": 15},
+    {"problem": "Bir pakettada 6 ta chokolad bor. 4 paketda nechta chokolad bor?", "answer": 24},
+    {"problem": "Do'konidagi 50 ta somon ichida 35 tasi sotildi. Nechta somon qoldi?", "answer": 15},
+    {"problem": "Besh kunda 2 ta har kuni yana yangilik chop etildi. Jami nechta yangilik chop etildi?", "answer": 10}
+  ],
+  "3": [
+    {"problem": "Kitob do'konida 125 ta ilm kitob va 75 ta o'yinchoq kitob bor. Jami nechta kitob bor?", "answer": 200},
+    {"problem": "Avtobusda 45 ta yolchi bor edi. 30 tasi tushdi, 15 tasi chiqdi. Endi nechta yolchi bor?", "answer": 30},
+    {"problem": "Ekskavator bir kunda 120 ta do'l tuproq haydadi. 5 kunda nechta do'l tuproq haydaydi?", "answer": 600},
+    {"problem": "Marotabaning uzunligi 72 metr. Uni 8 ta teng qismga bo'ldi. Har bir qism nechta metr?", "answer": 9},
+    {"problem": "Ustoz 250 ta qavat pishirdi. Har bir qovog'ida 5 ta qavat bor. Nechta qovog' ish qo'yadi?", "answer": 50},
+    {"problem": "Fermerning 320 ta tovuqi bor. Ularning yarmi qush. Nechta qush bor?", "answer": 160},
+    {"problem": "Bir qavatda 24 ta kirpich. 15 qavat nechta kirpich?", "answer": 360},
+    {"problem": "Maktabda 450 ta talaba. Ularning 3/5 qismi erkak. Nechta erkak?", "answer": 270},
+    {"problem": "Makon uzunligi 256 metr. Uni 4 ta teng qismga bo'ldi. Har bir qism?", "answer": 64},
+    {"problem": "Do'konida 180 ta olma. Juma kuni 60 ta sotildi. Shanba kuni 45 ta sotildi. Nechta olma qoldi?", "answer": 75}
+  ],
+  "4": [
+    {"problem": "Zavod birinchi oyda 1250 ta mahsulot tayyorladi. Ikkinchi oyda 1750 ta mahsulot tayyorladi. Jami nechta mahsulot tayyorlandi?", "answer": 3000},
+    {"problem": "Maktabda 480 ta talaba bor. Ularning 3/4 qismi qiz. Nechta qiz bor?", "answer": 360},
+    {"problem": "Maydon uzunligi 100 metr, eni 50 metr. Maydonning yuzasi nechta kvadrat metr?", "answer": 5000},
+    {"problem": "Dushanba 24 dona, seliskuni 36 dona, chorshanba 28 dona kitob sotilib ketdi. 3 kunda jami nechta kitob sotildi?", "answer": 88},
+    {"problem": "Bir shirinlik 1250 soʻm turadi. 8 ta shirinlik nechta soʻmga kerak?", "answer": 10000},
+    {"problem": "Avtomobil bir soatda 85 km yuradi. 6 soatda nechta km yuradi?", "answer": 510},
+    {"problem": "Kitob do'konida 2500 ta kitob bor. Birinchi haftada 380 ta sotildi. Ikkinchi haftada 420 ta sotildi. Nechta kitob qoldi?", "answer": 1700},
+    {"problem": "Uzbekistonda 33 ta viloyat va 1 ta respublika bor. Jami nechta to'plamga bo'linadi?", "answer": 34},
+    {"problem": "Fermer 850 ta paxta o'stirdi. Mahsulot: 1 kg paxta = 2.5 sofali. Jami nechta sofali?", "answer": 2125},
+    {"problem": "Uch xona olish kerak. Birinchi xonaning narxi 450 000 soʻm, ikkinchi 380 000 soʻm, uchinchi 520 000 soʻm. Jami narx?", "answer": 1350000}
+  ]
+}
