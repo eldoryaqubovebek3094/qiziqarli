@@ -17,6 +17,12 @@ apiKey: "AIzaSyBPIA4kBZrGssQsrNwXX4M5Zoo84lgcVak",
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+  // Test yozish
+  await setDoc(doc(db, "test", "hello"), { msg: "Salom Eldor!" });
+  console.log("Firestorega yozildi!");
+
+
+
 // Qurilma aniqlash
 function categorizeDevice(ua = "") {
   ua = ua.toLowerCase();
