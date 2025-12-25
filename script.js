@@ -1,3 +1,29 @@
+<<<<<<< HEAD
+=======
+document.addEventListener("contextmenu", function (event) {
+  event.preventDefault();
+});
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "F12" || event.key === "Escape") {
+    event.preventDefault();
+  }
+});
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        event.preventDefault();
+    }
+});
+
+const modal = document.getElementById("myModal");
+// const btn = document.getElementById("openModal");
+const span = document.getElementsByClassName("close")[0];
+
+
+
+
+>>>>>>> d06f821b2ab7a10305761135363c908f134f77db
 let currentLevel = 1;
 const totalLevels = 10;
 const questionsPerLevel = 10;
@@ -120,8 +146,59 @@ function checkAnswer(index) {
       statusSpan.innerHTML = "✅";
       statusSpan.style.color = "green";
     } else {
+<<<<<<< HEAD
       statusSpan.innerHTML = "❌";
       statusSpan.style.color = "red";
+=======
+      userAnswers.push({
+        question: q.question,
+        userAnswer,
+        correctAnswer: q.answer,
+      });
+      if (userAnswer === q.answer) {
+        correctAnswers++;
+      }
+    }
+  });
+
+  const resultDiv = document.getElementById("result");
+  const feedbackDiv = document.getElementById("feedback");
+  feedbackDiv.innerHTML = "";
+  feedbackDiv.classList.remove("hidden");
+
+  if (!allAnswered) {
+    // alert("Iltimos, hamma kataklarga javoblarni yozing!");
+  
+
+    
+        modal.style.display = "block";
+    
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    return;
+  }
+
+  if (correctAnswers === questionsPerLevel) {
+    currentLevel++;
+    resultDiv.innerHTML =
+      "<h1 class=\"correct\">Hammasi to'g'ri! Keyingi bosqichga o'tdingiz! 🎉🎉🎉 </h1>";
+    if (currentLevel <= totalLevels) {
+      generateQuestions(currentLevel);
+      displayQuestions();
+      document.getElementById("level").innerText = currentLevel;
+    } else {
+      resultDiv.innerHTML =
+        "Tabriklaymiz! Siz barcha bosqichlarni muvaffaqiyatli o'tdingiz!";
+>>>>>>> d06f821b2ab7a10305761135363c908f134f77db
     }
   } else {
     statusSpan.innerHTML = "";
@@ -163,6 +240,7 @@ window.addEventListener("DOMContentLoaded", () => {
       let allAnswered = true;
       let correctAnswers = 0;
 
+<<<<<<< HEAD
       questions.forEach((q, index) => {
         const el = document.getElementById(`answer${index}`);
         const userAnswer = el ? parseFloat(el.value) : NaN;
@@ -211,3 +289,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
     startTimer();
   });
+=======
+
+
+// Dastlabki misollarni generatsiya qilish
+generateQuestions(currentLevel);
+displayQuestions();
+>>>>>>> d06f821b2ab7a10305761135363c908f134f77db
