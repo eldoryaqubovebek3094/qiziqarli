@@ -5,19 +5,12 @@ import { getFirestore, doc, setDoc, getDoc, updateDoc, increment }
 
 // Firebase config (Firebase Console’dan olasan)
 const firebaseConfig = {
-  //   apiKey: "YOUR_API_KEY",
-  //   authDomain: "YOUR_PROJECT.firebaseapp.com",
-  //   projectId: "YOUR_PROJECT_ID",
-  //   storageBucket: "YOUR_PROJECT.appspot.com",
-  //   messagingSenderId: "YOUR_SENDER_ID",
-  //   appId: "YOUR_APP_ID"
-  apiKey: "AIzaSyBc2hQrNFOgBTVjFmK6PXHTHvTmmeY-RDE",
-  authDomain: "kinolar-57498.firebaseapp.com",
-  projectId: "kinolar-57498",
-  storageBucket: "kinolar-57498.appspot.com",
-  messagingSenderId: "440752215048",
-  appId: "1:440752215048:web:33f514d74626d025d1adbd",
-  measurementId: "G-06T6RPRBMX",
+apiKey: "AIzaSyBPIA4kBZrGssQsrNwXX4M5Zoo84lgcVak",
+  authDomain: "portfolio-eweb.firebaseapp.com",
+  projectId: "portfolio-eweb",
+  storageBucket: "portfolio-eweb.firebasestorage.app",
+  messagingSenderId: "382513632096",
+  appId: "1:382513632096:web:6f450213708826996f4405"
 };
 
 // Init
