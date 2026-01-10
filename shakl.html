@@ -3,20 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="styles.css">
 <title>Shakl va Rang O‘yini (ABCD)</title>
-    <script>
-				// Prevent some default keys (lightweight protection)
-				document.addEventListener("contextmenu", function (event) {
-					event.preventDefault();
-				});
-
-				document.addEventListener("keydown", function (event) {
-					if (event.key === "F12") {
-						event.preventDefault();
-					}
-				});
-			</script>
 <style>
 :root{
     --primary:#4caf50;
@@ -24,19 +11,49 @@
     --footer-text:#fff;
     --bg-color:#f4f4f4;
 }
-body{margin:0; font-family:Arial,sans-serif; text-align:center; padding-top:100px; padding-bottom:75px; background:var(--bg-color);}
-body.dark{--primary:#212121; --header-text:#fff; --footer-text:#fff; --bg-color:#121212; color:#fff;}
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    text-align:center;
+    padding-top:100px;
+    padding-bottom:75px;
+    background:var(--bg-color);
+}
+body.dark{
+    --primary:#212121;
+    --header-text:#fff;
+    --footer-text:#fff;
+    --bg-color:#121212;
+    color:#fff;
+}
 
 /* HEADER */
-.header{position:fixed; top:0; left:0; width:100%; height:60px; background-color:var(--primary); color:var(--header-text); display:flex; align-items:center; justify-content:center; gap:12px; font-size:22px; border-radius:15px; z-index:100;}
-.theme-toggle{margin-left:8px; background:transparent; border:none; font-size:18px; cursor:pointer; transition:transform 0.2s;}
+.header{
+    position:fixed; top:0; left:0; width:100%; height:60px;
+    background-color:var(--primary);
+    color:var(--header-text);
+    display:flex; align-items:center; justify-content:center; gap:12px;
+    font-size:22px; border-radius:15px; z-index:100;
+}
+.theme-toggle{
+    margin-left:8px; background:transparent; border:none; font-size:18px;
+    cursor:pointer; transition:transform 0.2s;
+}
 
 /* SHAPE AREA */
-#shape-area{margin:20px auto; width:90%; max-width:300px; height:200px; display:flex; justify-content:center; align-items:center;}
-.shape-svg{width:120px; height:120px;}
+#shape-area{
+    margin:20px auto; width:90%; max-width:300px; height:200px;
+    display:flex; justify-content:center; align-items:center;
+}
+.shape-svg{
+    width:120px; height:120px; max-width:100%; height:auto;
+}
 
 /* OPTIONS */
-button.option-btn{margin:5px; padding:10px 16px; font-size:16px; border-radius:8px; border:none; cursor:pointer; transition:0.2s;}
+button.option-btn{
+    margin:5px; padding:10px 16px; font-size:16px; border-radius:8px;
+    border:none; cursor:pointer; transition:0.2s;
+}
 button.option-btn:hover{transform:scale(1.05);}
 
 /* RESULT */
@@ -45,7 +62,10 @@ button.option-btn:hover{transform:scale(1.05);}
 .error{color:#b71c1c; background:linear-gradient(90deg,#ffb3b3,#ffd6d6); padding:8px; border-radius:8px;}
 
 /* TIMER */
-.timer{margin-top:10px; font-size:20px; font-weight:bold; color:#0d47a1; background:#e3f2fd; padding:6px; border-radius:6px; transition:background 0.3s,color 0.3s;}
+.timer{
+    margin-top:10px; font-size:20px; font-weight:bold; color:#0d47a1;
+    background:#e3f2fd; padding:6px; border-radius:6px; transition:background 0.3s,color 0.3s;
+}
 .timer.warning{color:#b71c1c; animation:pulse .5s infinite;}
 @keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.1);}100%{transform:scale(1);}}
 
@@ -56,8 +76,15 @@ button.option-btn:hover{transform:scale(1.05);}
 #scoreboard{margin-top:15px; font-size:18px;}
 
 /* FOOTER */
-.footer{position:fixed; bottom:0; left:0; width:100%; height:50px; border-radius:15px; background-color:var(--primary); color:var(--footer-text); display:flex; align-items:center; justify-content:center; z-index:100;}
-.footer a{color:var(--header-text); text-decoration:none; font-weight:bold; display:flex; align-items:center; gap:6px;}
+.footer{
+    position:fixed; bottom:0; left:0; width:100%; height:50px; border-radius:15px;
+    background-color:var(--primary); color:var(--footer-text);
+    display:flex; align-items:center; justify-content:center; z-index:100;
+}
+.footer a{
+    color:var(--header-text); text-decoration:none; font-weight:bold;
+    display:flex; align-items:center; gap:6px;
+}
 .footer a:hover{color:#d5006d;text-decoration:underline;}
 .footer img{width:22px;height:22px;border-radius:50%;}
 
@@ -80,7 +107,6 @@ button.option-btn:hover{transform:scale(1.05);}
     <span>Shakl va Rang O‘yini (ABCD)</span>
     <button id="theme-toggle" class="theme-toggle">🌙</button>
 </div>
- <a href="/" class="button">🏠 Bosh sahifaga qaytish</a>
 
 <div id="shape-area"></div>
 <div id="options"></div>
@@ -103,31 +129,25 @@ button.option-btn:hover{transform:scale(1.05);}
 </div>
 
 <script>
-// THEME
+// THEME TOGGLE
 const themeBtn=document.getElementById('theme-toggle');
 themeBtn.addEventListener('click',()=>{
     document.body.classList.toggle('dark');
     themeBtn.textContent=document.body.classList.contains('dark')?'🌞':'🌙';
 });
 
-// SHAKL VA RANG
+// SHAPES & COLORS
 const shapes=["Doyra","Kvadrat","Uchburchak","Yulduz"];
 const colorsUzbek=["Qizil","Yashil","Moviy","Sariq","Pushti","To‘q sariq","Binafsha","Siyan"];
 const colorsMap={
-  "Qizil":"red",
-  "Yashil":"green",
-  "Moviy":"blue",
-  "Sariq":"yellow",
-  "Pushti":"pink",
-  "To‘q sariq":"darkorange",
-  "Binafsha":"purple",
-  "Siyan":"cyan"
+  "Qizil":"red","Yashil":"green","Moviy":"blue","Sariq":"yellow",
+  "Pushti":"pink","To‘q sariq":"darkorange","Binafsha":"purple","Siyan":"cyan"
 };
 let currentShape="", currentColor="";
 let totalGames=0, correctGames=0, wrongGames=0;
 let timerInterval=null, timeLeft=0;
 
-// SALYUT
+// CONFETTI
 function launchConfetti(){
     const box=document.getElementById('confetti'); box.innerHTML='';
     for(let i=0;i<60;i++){
@@ -144,7 +164,7 @@ function clearConfetti(){document.getElementById('confetti').innerHTML='';}
 function startTimer(){
     clearInterval(timerInterval);
     const timerDiv=document.getElementById('oyin_vaqti');
-    timeLeft=12;
+    timeLeft=Math.max(5,Math.min(15,Math.round(currentShape.length*1.5)));
     timerDiv.classList.remove("warning");
     timerDiv.textContent=`⏳ Vaqt: ${timeLeft} s`;
     timerInterval=setInterval(()=>{
@@ -169,20 +189,27 @@ function generateQuestion(){
     area.innerHTML='';
     currentShape=shapes[Math.floor(Math.random()*shapes.length)];
     currentColor=colorsUzbek[Math.floor(Math.random()*colorsUzbek.length)];
-    
-    let colorCSS = colorsMap[currentColor]; // CSS uchun inglizcha rang
+    let colorCSS=colorsMap[currentColor];
+
     let svg="";
     switch(currentShape){
-        case "Doyra": svg=`<svg class="shape-svg"><circle cx="60" cy="60" r="50" fill="${colorCSS}"/></svg>`; break;
-        case "Kvadrat": svg=`<svg class="shape-svg"><rect x="10" y="10" width="100" height="100" fill="${colorCSS}"/></svg>`; break;
-        case "Uchburchak": svg=`<svg class="shape-svg"><polygon points="60,10 110,110 10,110" fill="${colorCSS}"/></svg>`; break;
-        case "Yulduz": svg=`<svg class="shape-svg" viewBox="0 0 100 100">
-            <polygon points="50,0 61,35 98,35 68,57 79,91 50,70 21,91 32,57 2,35 39,35" fill="${colorCSS}"/>
-        </svg>`; break;
+        case "Doyra":
+            svg=`<svg class="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet"><circle cx="60" cy="60" r="50" fill="${colorCSS}"/></svg>`;
+            break;
+        case "Kvadrat":
+            svg=`<svg class="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet"><rect x="10" y="10" width="100" height="100" fill="${colorCSS}"/></svg>`;
+            break;
+        case "Uchburchak":
+            svg=`<svg class="shape-svg" viewBox="0 0 120 120" preserveAspectRatio="xMidYMid meet"><polygon points="60,10 110,110 10,110" fill="${colorCSS}"/></svg>`;
+            break;
+        case "Yulduz":
+            svg=`<svg class="shape-svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+                <polygon points="50,0 61,35 98,35 68,57 79,91 50,70 21,91 32,57 2,35 39,35" fill="${colorCSS}"/></svg>`;
+            break;
     }
     area.innerHTML=svg;
 
-    // AB-CD options
+    // OPTIONS AB-CD
     const opts=document.getElementById('options');
     opts.innerHTML='';
     let correctOpt=currentShape+' '+currentColor;
@@ -233,9 +260,8 @@ function updateScoreboard(){
     document.getElementById('wrongGames').textContent=wrongGames;
 }
 
-// BOSHLASH
+// START GAME
 generateQuestion();
 </script>
-
 </body>
 </html>
