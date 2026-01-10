@@ -6,6 +6,18 @@
     <title>Ko‘paytirish jadvali (2–100)</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="jadval.css">
+       			<script>
+				// Prevent some default keys (lightweight protection)
+				document.addEventListener("contextmenu", function (event) {
+					event.preventDefault();
+				});
+
+				document.addEventListener("keydown", function (event) {
+					if (event.key === "F12") {
+						event.preventDefault();
+					}
+				});
+			</script>
 </head>
 
 <body>
