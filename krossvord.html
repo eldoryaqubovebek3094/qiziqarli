@@ -1,155 +1,308 @@
 <!DOCTYPE html>
 <html lang="uz">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Mantiqiy Harf O‘yini</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 50px;
-        }
+<meta charset="UTF-8">
+<title>Bilimdon Bolajon!</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+:root {
+  --primary: #4caf50;
+  --header-text: #fff;
+  --footer-text: #fff;
+  --bg-color: #f4f4f4;
+  --box-bg: #fff;
+}
+body {
+  font-family: Arial, sans-serif;
+  text-align:center;
+  padding-top:70px;
+  padding-bottom:60px;
+  background: var(--bg-color);
+  margin:0;
+  transition: background 0.3s, color 0.3s;
+}
 
-        #game {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 400px;
-            margin-bottom: 20px;
-        }
+/* Dark theme */
+body.dark {
+  --primary: #212121;
+  --header-text: #fff;
+  --footer-text: #fff;
+  --bg-color: #121212;
+  --box-bg: #1e1e1e;
+  color: #fff;
+}
 
-        .letter-box {
-            position: relative;
-            width: 50px;
-            height: 50px;
-            border: 1px solid #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 5px;
-            font-size: 20px;
-            font-weight: bold;
-            user-select: none;
-        }
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: var(--primary);
+  color: var(--header-text);
+  font-size: 22px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 15px;
+  z-index: 100;
+  transition: background 0.3s, color 0.3s;
+}
 
-        .letter-box span {
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            font-size: 12px;
-            color: #555;
-        }
+.theme-toggle {
+  margin-left: 8px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
 
-        #result {
-            margin-top: 20px;
-            font-weight: bold;
-            font-size: 18px;
-        }
+/* Game area */
+#game { display:flex; justify-content:center; gap:10px; margin:20px 0; flex-wrap:wrap; }
+.letter-box { position:relative; width:50px; height:50px; background:var(--box-bg); border-radius:6px; font-size:24px; line-height:50px; font-weight:bold; box-shadow:0 0 5px rgba(0,0,0,0.2); transition: background 0.3s; }
+.letter-box span { position:absolute; bottom:2px; right:4px; font-size:12px; color:#555; }
 
-        button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
+#resultHarf { margin-top:15px; font-size:20px; font-weight:bold; }
+.success { color:#0b6e2e; background:linear-gradient(90deg,#9dffb3,#5cffd1); padding:8px; border-radius:8px; }
+.error { color:#b71c1c; background:linear-gradient(90deg,#ffb3b3,#ffd6d6); padding:8px; border-radius:8px; }
 
-        input {
-            font-size: 18px;
-            width: 200px;
-            text-align: center;
-        }
-    </style>
+.timer { margin-top:10px; font-size:20px; font-weight:bold; color:#0d47a1; background:#e3f2fd; padding:6px; border-radius:6px; transition: background 0.3s, color 0.3s; }
+.timer.warning { color:#b71c1c; animation:pulse .5s infinite; }
+@keyframes pulse {0%{transform:scale(1);}50%{transform:scale(1.1);}100%{transform:scale(1);}}
+
+#confetti { position:fixed; inset:0; pointer-events:none; }
+.confetti { position:absolute; width:8px; height:8px; animation:fall 2s linear forwards; }
+@keyframes fall { from{transform:translateY(-10px) rotate(0);} to{transform:translateY(100vh) rotate(360deg); opacity:0;} }
+
+/* Scoreboard */
+#scoreboard { margin-top:20px; font-size:18px; }
+
+/* Footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  border-radius: 15px;
+  background-color: var(--primary);
+  color: var(--footer-text);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: background 0.3s, color 0.3s;
+}
+.footer p { margin:0; }
+.footer a {
+  color: var(--header-text);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.footer a:hover { color:#d5006d; text-decoration: underline; }
+.footer img { width:22px; height:22px; border-radius:50%; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  #game { flex-wrap:wrap; }
+  h1 { font-size:1.8em; }
+  h2 { font-size:1.4em; }
+  button { padding: 8px 14px; font-size:0.95em; }
+}
+@media (max-width:600px){
+  .header{height:50px; font-size:18px;}
+  .footer{height:45px;}
+  h1{font-size:1.5em;margin-bottom:12px;}
+  h2{font-size:1.2em;}
+  input[type="number"]{ width:60px; padding:6px; font-size:0.95em;}
+  button{padding:6px 12px; font-size:0.85em; width:100%;}
+}
+</style>
 </head>
-
 <body>
 
-    <h2>Mantiqiy Harf O‘yini</h2>
+<div class="header">
+    <span>Bilimdon Bolajon!</span>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌙</button>
+</div>        <a href="/" class="button">🏠 Bosh sahifaga qaytish</a>
 
-    <div id="game"></div>
+<h2>🔤 So‘zlarni tartiblash o‘yini</h2>
 
-    <p id="sequence">To‘g‘ri raqam ketma-ketligini kiriting:</p>
-    <input type="text" id="userInput" placeholder="Masalan: 4721356" maxlength="20">
-    <button id="checkBtn">Tekshirish</button>
+<div id="oyin_vaqti" class="timer"></div>
+<div id="game"></div>
+<input id="userInput" placeholder="Raqamlarni kiriting">
+<br><br>
+<button id="checkBtn">Tekshirish</button>
 
-    <p id="result"></p>
+<div id="resultHarf"></div>
+<div id="confetti"></div>
 
-    <script>
-        // JSON fayldan jumlalar
-        const sentences = [
-            { "word": "BOLAJON" },
-            { "word": "OLMA" },
-            { "word": "DARAJA" },
-            { "word": "KITOB" },
-            { "word": "MAKTAB" },
-            { "word": "DO'STLIK" },
-            { "word": "O'YIN" },
-            { "word": "TABASSUM" },
-            { "word": "ILM" },
-            { "word": "FAN" },
-            { "word": "JAVOB" },
-            { "word": "SAVOL" },
-            { "word": "YORIQNOMA" },
-            { "word": "MATEMATIKA" },
-            { "word": "GEOGRAFIYA" },
-            { "word": "TARIX" },
-            { "word": "FIZIKA" },
-            { "word": "KIMYO" },
-            { "word": "BIOLOGIYA" },
-            { "word": "INFORMATIKA" },
-            { "word": "DUNYO" },
-            { "word": "KOSMOS" }
-        ];
+<div id="scoreboard">
+  Umumiy o‘yinlar: <span id="totalGames">0</span> |
+  To‘g‘ri javoblar: <span id="correctGames">0</span> |
+  Noto‘g‘ri javoblar: <span id="wrongGames">0</span>
+</div>
 
-        let current = null;
+<!-- Footer -->
+<div class="footer">
+    <p>Powered by
+        <a href="https://github.com/eldoryaqubovebek3094">
+            <img src="https://avatars.githubusercontent.com/u/148733238?v=4" alt="">
+            Yaqubov Eldor
+        </a>
+    </p>
+</div>
 
-        // Funksiya: raqamlarni tayinlash va chalkashtirish
-        function prepareWord() {
-            current = sentences[Math.floor(Math.random() * sentences.length)].word;
-            let letters = current.split('');
-            let numbers = [];
-            for (let i = 0; i < letters.length; i++) numbers.push(i + 1);
-            numbers = numbers.sort(() => Math.random() - 0.5); // Chalkashtirish
+<script>
+// ==================== THEME TOGGLE ====================
+const themeBtn = document.getElementById('theme-toggle');
+themeBtn.addEventListener('click',()=>{
+    document.body.classList.toggle('dark');
+    if(document.body.classList.contains('dark')){
+        themeBtn.textContent='🌞';
+    } else {
+        themeBtn.textContent='🌙';
+    }
+});
 
-            const gameDiv = document.getElementById('game');
-            gameDiv.innerHTML = '';
-            letters.forEach((ltr, idx) => {
-                const div = document.createElement('div');
-                div.className = 'letter-box';
-                div.textContent = ltr;
-                div.dataset.number = numbers[idx];
+// ==================== SO'ZLAR ====================
+const sentences = [
+    "BOLAJON","OLMA","QALAMPIR","DARAJA","KITOB","MAKTAB",
+    "DO'STLIK","O'YIN","TABASSUM","ILM","TA'LIM","O'QITUVCHI",
+    "O'QITISH","FAN","JAVOB","SAVOL","YORIQNOMA","BILIM",
+    "MATEMATIKA","GEOGRAFIYA","TARIX","FIZIKA","KIMYO",
+    "BIOLOGIYA","INFORMATIKA","DUNYO","KOSMOS","YER",
+    "OY","TABIAT","HAYVONOT","O'SIMLIK","O'ZBEKISTON"
+];
 
-                // Kichkina raqam span orqali ko‘rsatish
-                const numSpan = document.createElement('span');
-                numSpan.textContent = numbers[idx];
-                div.appendChild(numSpan);
+let current = "";
+let timerInterval = null;
+let timeLeft = 0;
 
-                gameDiv.appendChild(div);
-            });
+// ==================== NATIJALAR ====================
+let totalGames = 0;
+let correctGames = 0;
+let wrongGames = 0;
 
-            document.getElementById('userInput').value = '';
-            document.getElementById('result').textContent = '';
+// ==================== FUNKSIYALAR ====================
+function calculateTime(word){
+    let t = Math.round(word.length * 1.2);
+    if(t<5) t=5;
+    if(t>20) t=20;
+    return t;
+}
+
+function startTimer(word){
+    clearInterval(timerInterval);
+    const timerDiv = document.getElementById('oyin_vaqti');
+    timeLeft = calculateTime(word);
+    timerDiv.classList.remove("warning");
+    timerDiv.textContent = `⏳ Vaqt: ${timeLeft} s`;
+
+    timerInterval = setInterval(()=>{
+        timeLeft--;
+        timerDiv.textContent = `⏳ Vaqt: ${timeLeft} s`;
+        if(timeLeft<=3) timerDiv.classList.add("warning");
+        if(timeLeft<=0){
+            clearInterval(timerInterval);
+            const result = document.getElementById('resultHarf');
+            result.className="error";
+            result.textContent="⏰ Vaqt tugadi! Taslim bo‘lma, yana urin 💪🙂";
+            wrongGames++;
+            totalGames++;
+            updateScoreboard();
+            setTimeout(prepareWord,1500);
         }
+    },1000);
+}
 
-        // Tekshirish
-        document.getElementById('checkBtn').addEventListener('click', () => {
-            const input = document.getElementById('userInput').value;
-            const gameDiv = document.getElementById('game');
-            let correctSeq = Array.from(gameDiv.children).map(div => div.dataset.number).join('');
-            if (input === correctSeq) {
-                document.getElementById('result').textContent = "Zo‘r! Hammasi to‘g‘ri!";
-                setTimeout(prepareWord, 1500); // keyingi so‘zga o‘tadi
-            } else {
-                document.getElementById('result').textContent = "Xato! Qaytadan urinib ko‘ring.";
-            }
-        });
+function prepareWord(){
+    clearInterval(timerInterval);
+    current = sentences[Math.floor(Math.random()*sentences.length)];
+    const letters = current.split('');
+    let numbers = letters.map((_,i)=>i+1).sort(()=>Math.random()-0.5);
 
-        // O‘yin boshlash
-        prepareWord();
-    </script>
+    const gameDiv = document.getElementById('game');
+    gameDiv.innerHTML = '';
+    letters.forEach((ltr,i)=>{
+        const div=document.createElement('div');
+        div.className='letter-box';
+        div.textContent=ltr;
+        div.dataset.number = numbers[i];
+        const span=document.createElement('span');
+        span.textContent = numbers[i];
+        div.appendChild(span);
+        gameDiv.appendChild(div);
+    });
+
+    document.getElementById('userInput').value='';
+    document.getElementById('resultHarf').textContent='';
+
+    startTimer(current);
+}
+
+document.getElementById('checkBtn').addEventListener('click',()=>{
+    clearInterval(timerInterval);
+    const input=document.getElementById('userInput').value;
+    const gameDiv=document.getElementById('game');
+    const result=document.getElementById('resultHarf');
+    const correctSeq = Array.from(gameDiv.children).map(d=>d.dataset.number).join('');
+    result.className='';
+
+    totalGames++;
+
+    if(input===correctSeq){
+        result.textContent="🎉 A’lo! To‘g‘ri! 🚀";
+        result.classList.add("success");
+        correctGames++;
+        launchConfetti();
+        updateScoreboard();
+        setTimeout(()=>{
+            clearConfetti();
+            prepareWord();
+        },1800);
+    } else {
+        result.textContent="🙂 Xato! Taslim bo‘lma 💪";
+        result.classList.add("error");
+        wrongGames++;
+        updateScoreboard();
+        setTimeout(prepareWord,1500);
+    }
+});
+
+function updateScoreboard(){
+    document.getElementById('totalGames').textContent = totalGames;
+    document.getElementById('correctGames').textContent = correctGames;
+    document.getElementById('wrongGames').textContent = wrongGames;
+}
+
+// ==================== SALYUT ====================
+function launchConfetti(){
+    const box=document.getElementById('confetti');
+    box.innerHTML='';
+    for(let i=0;i<60;i++){
+        const c=document.createElement('div');
+        c.className='confetti';
+        c.style.left=Math.random()*100+'vw';
+        c.style.backgroundColor=`hsl(${Math.random()*360},100%,50%)`;
+        box.appendChild(c);
+    }
+}
+function clearConfetti(){ document.getElementById('confetti').innerHTML=''; }
+
+// ==================== BOSHLASH ====================
+prepareWord();
+</script>
 
 </body>
-
 </html>

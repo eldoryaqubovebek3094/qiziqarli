@@ -125,3 +125,6 @@ function clearConfetti(){
 
         // O‘yin boshlash
         prepareWord();
+
+
+        
