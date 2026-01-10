@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<title>Shakl va Rang O‘yini (ABCD)</title>
+    <script>
+				// Prevent some default keys (lightweight protection)
+				document.addEventListener("contextmenu", function (event) {
+					event.preventDefault();
+				});
+
+				document.addEventListener("keydown", function (event) {
+					if (event.key === "F12") {
+						event.preventDefault();
+					}
+				});
+			</script>
+<style>
+:root{
+    --primary:#4caf50;
+    --header-text:#fff;
+    --footer-text:#fff;
+    --bg-color:#f4f4f4;
+}
+body{margin:0; font-family:Arial,sans-serif; text-align:center; padding-top:70px; padding-bottom:60px; background:var(--bg-color);}
+body.dark{--primary:#212121; --header-text:#fff; --footer-text:#fff; --bg-color:#121212; color:#fff;}
+
+/* HEADER */
+.header{position:fixed; top:0; left:0; width:100%; height:60px; background-color:var(--primary); color:var(--header-text); display:flex; align-items:center; justify-content:center; gap:12px; font-size:22px; border-radius:15px; z-index:100;}
+.theme-toggle{margin-left:8px; background:transparent; border:none; font-size:18px; cursor:pointer; transition:transform 0.2s;}
+
+/* SHAPE AREA */
+#shape-area{margin:20px auto; width:90%; max-width:300px; height:200px; display:flex; justify-content:center; align-items:center;}
+.shape-svg{width:120px; height:120px;}
+
+/* OPTIONS */
+button.option-btn{margin:5px; padding:10px 16px; font-size:16px; border-radius:8px; border:none; cursor:pointer; transition:0.2s;}
+button.option-btn:hover{transform:scale(1.05);}
+
+/* RESULT */
+#result{margin-top:15px; font-size:20px; font-weight:bold;}
+.success{color:#0b6e2e; background:linear-gradient(90deg,#9dffb3,#5cffd1); padding:8px; border-radius:8px;}
+.error{color:#b71c1c; background:linear-gradient(90deg,#ffb3b3,#ffd6d6); padding:8px; border-radius:8px;}
+
+/* TIMER */
+.timer{margin-top:10px; font-size:20px; font-weight:bold; color:#0d47a1; background:#e3f2fd; padding:6px; border-radius:6px; transition:background 0.3s,color 0.3s;}
+.timer.warning{color:#b71c1c; animation:pulse .5s infinite;}
+@keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.1);}100%{transform:scale(1);}}
+
+/* CONFETTI */
+#confetti{position:fixed; inset:0; pointer-events:none;}
+
+/* SCOREBOARD */
+#scoreboard{margin-top:15px; font-size:18px;}
+
+/* FOOTER */
+.footer{position:fixed; bottom:0; left:0; width:100%; height:50px; border-radius:15px; background-color:var(--primary); color:var(--footer-text); display:flex; align-items:center; justify-content:center; z-index:100;}
+.footer a{color:var(--header-text); text-decoration:none; font-weight:bold; display:flex; align-items:center; gap:6px;}
+.footer a:hover{color:#d5006d;text-decoration:underline;}
+.footer img{width:22px;height:22px;border-radius:50%;}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    #shape-area{height:180px;} 
+    .shape-svg{width:100px;height:100px;}
+    button.option-btn{font-size:14px; padding:8px 12px;}
+}
+@media(max-width:600px){
+    #shape-area{height:150px;} 
+    .shape-svg{width:90px;height:90px;}
+    button.option-btn{font-size:12px; padding:6px 10px;}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <span>Shakl va Rang O‘yini (ABCD)</span>
+    <button id="theme-toggle" class="theme-toggle">🌙</button>
+</div>
+ <a href="/" class="button">🏠 Bosh sahifaga qaytish</a>
+
+<div id="shape-area"></div>
+<div id="options"></div>
+<div id="oyin_vaqti" class="timer"></div>
+<div id="result"></div>
+<div id="confetti"></div>
+<div id="scoreboard">
+  Umumiy: <span id="totalGames">0</span> |
+  To‘g‘ri: <span id="correctGames">0</span> |
+  Noto‘g‘ri: <span id="wrongGames">0</span>
+</div>
+
+<div class="footer">
+    <p>Powered by
+        <a href="https://github.com/eldoryaqubovebek3094">
+            <img src="https://avatars.githubusercontent.com/u/148733238?v=4" alt="">
+            Yaqubov Eldor
+        </a>
+    </p>
+</div>
+
+<script>
+// THEME
+const themeBtn=document.getElementById('theme-toggle');
+themeBtn.addEventListener('click',()=>{
+    document.body.classList.toggle('dark');
+    themeBtn.textContent=document.body.classList.contains('dark')?'🌞':'🌙';
+});
+
+// SHAKL VA RANG
+const shapes=["Doyra","Kvadrat","Uchburchak","Yulduz"];
+const colorsUzbek=["Qizil","Yashil","Moviy","Sariq","Pushti","To‘q sariq","Binafsha","Siyan"];
+const colorsMap={
+  "Qizil":"red",
+  "Yashil":"green",
+  "Moviy":"blue",
+  "Sariq":"yellow",
+  "Pushti":"pink",
+  "To‘q sariq":"darkorange",
+  "Binafsha":"purple",
+  "Siyan":"cyan"
+};
+let currentShape="", currentColor="";
+let totalGames=0, correctGames=0, wrongGames=0;
+let timerInterval=null, timeLeft=0;
+
+// SALYUT
+function launchConfetti(){
+    const box=document.getElementById('confetti'); box.innerHTML='';
+    for(let i=0;i<60;i++){
+        const c=document.createElement('div');
+        c.className='confetti';
+        c.style.left=Math.random()*100+'vw';
+        c.style.backgroundColor=`hsl(${Math.random()*360},100%,50%)`;
+        box.appendChild(c);
+    }
+}
+function clearConfetti(){document.getElementById('confetti').innerHTML='';}
+
+// TIMER
+function startTimer(){
+    clearInterval(timerInterval);
+    const timerDiv=document.getElementById('oyin_vaqti');
+    timeLeft=12;
+    timerDiv.classList.remove("warning");
+    timerDiv.textContent=`⏳ Vaqt: ${timeLeft} s`;
+    timerInterval=setInterval(()=>{
+        timeLeft--;
+        timerDiv.textContent=`⏳ Vaqt: ${timeLeft} s`;
+        if(timeLeft<=3) timerDiv.classList.add("warning");
+        if(timeLeft<=0){
+            clearInterval(timerInterval);
+            totalGames++; wrongGames++;
+            updateScoreboard();
+            document.getElementById('result').className="error";
+            document.getElementById('result').textContent="⏰ Vaqt tugadi! Taslim bo‘lma 💪";
+            setTimeout(generateQuestion,1500);
+        }
+    },1000);
+}
+
+// GENERATE QUESTION
+function generateQuestion(){
+    clearInterval(timerInterval);
+    const area=document.getElementById('shape-area');
+    area.innerHTML='';
+    currentShape=shapes[Math.floor(Math.random()*shapes.length)];
+    currentColor=colorsUzbek[Math.floor(Math.random()*colorsUzbek.length)];
+    
+    let colorCSS = colorsMap[currentColor]; // CSS uchun inglizcha rang
+    let svg="";
+    switch(currentShape){
+        case "Doyra": svg=`<svg class="shape-svg"><circle cx="60" cy="60" r="50" fill="${colorCSS}"/></svg>`; break;
+        case "Kvadrat": svg=`<svg class="shape-svg"><rect x="10" y="10" width="100" height="100" fill="${colorCSS}"/></svg>`; break;
+        case "Uchburchak": svg=`<svg class="shape-svg"><polygon points="60,10 110,110 10,110" fill="${colorCSS}"/></svg>`; break;
+        case "Yulduz": svg=`<svg class="shape-svg" viewBox="0 0 100 100">
+            <polygon points="50,0 61,35 98,35 68,57 79,91 50,70 21,91 32,57 2,35 39,35" fill="${colorCSS}"/>
+        </svg>`; break;
+    }
+    area.innerHTML=svg;
+
+    // AB-CD options
+    const opts=document.getElementById('options');
+    opts.innerHTML='';
+    let correctOpt=currentShape+' '+currentColor;
+    let options=[correctOpt];
+    while(options.length<4){
+        let s=shapes[Math.floor(Math.random()*shapes.length)];
+        let c=colorsUzbek[Math.floor(Math.random()*colorsUzbek.length)];
+        let opt=s+' '+c;
+        if(!options.includes(opt)) options.push(opt);
+    }
+    options.sort(()=>Math.random()-0.5);
+    options.forEach((o,i)=>{
+        const btn=document.createElement('button');
+        btn.className='option-btn';
+        btn.textContent=`${String.fromCharCode(65+i)}. ${o}`;
+        btn.addEventListener('click',()=>checkAnswer(o));
+        opts.appendChild(btn);
+    });
+    document.getElementById('result').textContent='';
+    startTimer();
+}
+
+// CHECK ANSWER
+function checkAnswer(opt){
+    clearInterval(timerInterval);
+    totalGames++;
+    if(opt===currentShape+' '+currentColor){
+        correctGames++;
+        document.getElementById('result').className='success';
+        document.getElementById('result').textContent='🎉 To‘g‘ri! Zo‘r! 🚀';
+        launchConfetti();
+    } else {
+        wrongGames++;
+        document.getElementById('result').className='error';
+        document.getElementById('result').textContent='😅 Xato! Qayta urinib ko‘r 💪';
+    }
+    updateScoreboard();
+    setTimeout(()=>{
+        clearConfetti();
+        generateQuestion();
+    },1800);
+}
+
+// SCOREBOARD
+function updateScoreboard(){
+    document.getElementById('totalGames').textContent=totalGames;
+    document.getElementById('correctGames').textContent=correctGames;
+    document.getElementById('wrongGames').textContent=wrongGames;
+}
+
+// BOSHLASH
+generateQuestion();
+</script>
+
+</body>
+</html>
