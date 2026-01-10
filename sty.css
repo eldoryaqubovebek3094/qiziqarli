@@ -336,3 +336,96 @@ input[type="number"] {
   h2 { font-size: 1.2em; }
   .question { font-size: 0.95em; padding: 8px; }
   input[type="number"]
+    { width: 60px; padding: 6px; font-size: 0.95em; }
+  button { padding: 6px 12px; font-size: 0.85em; width: 100%; }
+}
+
+       #game {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+
+        .letter-box {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            border: 1px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            user-select: none;
+        }
+
+        .letter-box span {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            font-size: 12px;
+            color: #555;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input {
+            font-size: 18px;
+            width: 200px;
+            text-align: center;
+        }
+
+        #resultHarf{
+    margin-top: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.success{
+    color: #1e7f34;
+    background: linear-gradient(90deg, #a8ff78, #78ffd6);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,255,0,0.6);
+}
+
+.error{
+    color: #8b0000;
+    background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#confetti{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+.confetti{
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    animation: fall 2s linear forwards;
+}
+@keyframes fall{
+    from{transform: translateY(-10px) rotate(0deg);}
+    to{transform: translateY(100vh) rotate(360deg); opacity:0;}
+}
