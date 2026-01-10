@@ -1,0 +1,112 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #eef2f7;
+  background: inlinear-gradient(to right, #78a6f0, #eef2f7);
+  padding: 15px;
+  margin-bottom: 75px;
+}
+
+h1 {
+ 
+ margin-top: 45px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.controls {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.controls input {
+  padding: 10px;
+  font-size: 16px;
+  width: 180px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.controls button {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  background: #3498db;
+  color: white;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.controls button:hover {
+  background: #2980b9;
+}
+
+.number-block {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.number-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.rows {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  
+}
+
+.row {
+  width: 100px;
+  margin: 15px;
+  font-size: 15px;
+  background: #f1f9ff;
+  padding: 25px;
+  border-radius: 6px;
+  text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+
+}
+.row:hover {
+    transform: scale(1.05);
+    color: red;
+    font-size: 17px;
+    background: #f1f9ff;
+    padding: 25px;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+
+/* 📱 Telefon uchun */
+@media (max-width: 600px) {
+  .row {
+    width: 45%;
+    font-size: 20px;
+  }
+
+  .controls input {
+    width: 140px;
+  }
+}
+
+/* 🖨 Print / PDF uchun */
+@media print {
+  .controls {
+    display: none;
+  }
+  body {
+    background: white;
+  }
+}

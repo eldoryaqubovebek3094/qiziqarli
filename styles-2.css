@@ -1,4 +1,4 @@
-/* Theme variables */
+Theme variables
 :root{
     --bg: #e0f7fa;
     --panel-bg: #ffffff;
@@ -420,3 +420,4 @@ input[type="number"] {
     button { font-size: 0.75em; padding: 4px 8px; }
     .question { font-size: 0.9em; }
 }
+

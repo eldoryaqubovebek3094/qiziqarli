@@ -4,7 +4,7 @@ let shuffledProblems = [];
 
 async function loadProblemsData() {
   try {
-    const response = await fetch('problems.json');
+    const response = await fetch('problems-2.json');
     problemsData = await response.json();
   } catch (error) {
     console.error('JSON faylni yuklashda xato:', error);

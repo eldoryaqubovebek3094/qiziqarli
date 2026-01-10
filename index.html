@@ -7,10 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qiziqarli Matematika</title>
-    <link rel="stylesheet" href="styles-2.css">
+    <link rel="stylesheet" href="sty.css">
+    <link rel="stylesheet" href="jadval.css">
     <link rel="stylesheet" href="card.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    			<script>
+    			<!-- <script>
 				// Prevent some default keys (lightweight protection)
 				document.addEventListener("contextmenu", function (event) {
 					event.preventDefault();
@@ -21,7 +22,7 @@
 						event.preventDefault();
 					}
 				});
-			</script>
+			</script> -->
 </head>
 <body>
     <div class="header">
@@ -47,6 +48,7 @@
                 <a class="button" href="games.html">🎮 O'yinlar</a>
                 <a class="button" href="comparison.html">⚖️ Taqqoslash</a>
                 <a class="button" href="editor.html">✍️ Savol qo'shish</a>
+                <a class="button" href="jadval.html">📅 Ko'paytirish jadvali (2-dan/100-gacha)</a>
             </div>
 
             <h1>Matematika Misollari</h1>
@@ -90,47 +92,33 @@
         </p>
     </div>
 
-    <script>
-        (function(){
-            const table = document.getElementById('times-table');
-            if (!table) return;
-            const thead = document.createElement('thead');
-            const headerRow = document.createElement('tr');
-            headerRow.appendChild(document.createElement('th'));
-            for (let j = 1; j <= 9; j++) { const th = document.createElement('th'); th.textContent = j; headerRow.appendChild(th); }
-            thead.appendChild(headerRow);
-            table.appendChild(thead);
-            const tbody = document.createElement('tbody');
-            for (let i = 1; i <= 9; i++) {
-                const tr = document.createElement('tr');
-                const rowHead = document.createElement('th'); rowHead.textContent = i; tr.appendChild(rowHead);
-                for (let j = 1; j <= 9; j++) { const td = document.createElement('td'); td.textContent = i * j; tr.appendChild(td); }
-                tbody.appendChild(tr);
-            }
-            table.appendChild(tbody);
-        })();
-    </script>
+    <!-- scriptlar -->
 
-    <script>
-        // Theme toggle: persists in localStorage
-        (function(){
-            const btn = document.getElementById('theme-toggle');
-            const darkClass = 'dark-theme';
-            function applyTheme(dark) {
-                if (dark) document.documentElement.classList.add(darkClass);
-                else document.documentElement.classList.remove(darkClass);
-                if (btn) btn.textContent = dark ? '☀️' : '🌙';
-            }
-            let stored = localStorage.getItem('theme');
-            let isDark = stored ? stored === 'dark' : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-            applyTheme(isDark);
-            if (btn) btn.addEventListener('click', () => {
-                isDark = !document.documentElement.classList.contains(darkClass);
-                applyTheme(isDark);
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            });
-        })();
-    </script>
+
+    <script src="interaktiv.js"></script>
+
+
+
+
+ <script>
+(function(){
+    const btn = document.getElementById('theme-toggle');
+    const darkClass = 'dark-theme';
+    function applyTheme(dark) {
+        if (dark) document.body.classList.add(darkClass); // ✅ body ga qo‘shildi
+        else document.body.classList.remove(darkClass);
+        if (btn) btn.textContent = dark ? '☀️' : '🌙';
+    }
+    let stored = localStorage.getItem('theme');
+    let isDark = stored ? stored === 'dark' : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(isDark);
+    if (btn) btn.addEventListener('click', () => {
+        isDark = !document.body.classList.contains(darkClass);
+        applyTheme(isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+})();
+</script>
 
     <script src="script.js"></script>
     
