@@ -367,8 +367,32 @@ input[type="number"] {
 }
 
 .letter-box.active {
-  border: 2px solid green;
+    opacity: 0.7;
+    border: 4px solid rgb(14, 102, 124);
+    /* Rangli soyalar va effekt uchun */
+    box-shadow: 0 0 8px #0e667c, 0 0 16px #0e667c, 0 0 24px #0e667c, 0 0 32px #0e667c;
+    animation: rainbowGlow 1.5s infinite linear;
 }
+
+/* Ranglar aylanib turadigan animatsiya */
+@keyframes rainbowGlow {
+    0% {
+        box-shadow: 0 0 8px red, 0 0 16px orange, 0 0 24px yellow, 0 0 32px green;
+    }
+    25% {
+        box-shadow: 0 0 8px orange, 0 0 16px yellow, 0 0 24px green, 0 0 32px blue;
+    }
+    50% {
+        box-shadow: 0 0 8px yellow, 0 0 16px green, 0 0 24px blue, 0 0 32px violet;
+    }
+    75% {
+        box-shadow: 0 0 8px green, 0 0 16px blue, 0 0 24px violet, 0 0 32px red;
+    }
+    100% {
+        box-shadow: 0 0 8px red, 0 0 16px orange, 0 0 24px yellow, 0 0 32px green;
+    }
+}
+
 
 #numberPad {
   display: flex;
@@ -386,10 +410,36 @@ input[type="number"] {
   cursor: pointer;
 }
 
-button.used {
-  opacity: 0.5;
-  cursor: not-allowed;
+#numberPad button.used {
+    background-color: #0e667c;
+    opacity: 0.5;
+    /* Asosiy rang */
+    border: 2px solid #0e667c;
+    /* Rangli soyalar */
+    box-shadow: 0 0 8px red, 0 0 16px orange, 0 0 24px yellow, 0 0 32px green;
+    /* Ranglar aylanib turadigan animatsiya */
+    animation: rainbowGlow 1.5s infinite linear;
 }
+
+/* rainbowGlow animatsiyasi yuqoridagi bilan bir xil */
+@keyframes rainbowGlow {
+    0% {
+        box-shadow: 0 0 8px red, 0 0 16px orange, 0 0 24px yellow, 0 0 32px green;
+    }
+    25% {
+        box-shadow: 0 0 8px orange, 0 0 16px yellow, 0 0 24px green, 0 0 32px blue;
+    }
+    50% {
+        box-shadow: 0 0 8px yellow, 0 0 16px green, 0 0 24px blue, 0 0 32px violet;
+    }
+    75% {
+        box-shadow: 0 0 8px green, 0 0 16px blue, 0 0 24px violet, 0 0 32px red;
+    }
+    100% {
+        box-shadow: 0 0 8px red, 0 0 16px orange, 0 0 24px yellow, 0 0 32px green;
+    }
+}
+
 
 #resultHarf {
   margin-top: 15px;
