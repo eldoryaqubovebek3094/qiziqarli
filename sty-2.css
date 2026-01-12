@@ -1,4 +1,4 @@
-/* Theme variables */
+/* ==================== THEME VARIABLES ==================== */
 :root {
   --bg: #e0f7fa;
   --panel-bg: #ffffff;
@@ -23,7 +23,7 @@ body.dark-theme {
   --card-shadow: rgba(0, 0, 0, 0.6);
 }
 
-/* Global styles */
+/* ==================== GLOBAL STYLES ==================== */
 * {
   box-sizing: border-box;
 }
@@ -37,7 +37,7 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Header */
+/* ==================== HEADER ==================== */
 .header {
   position: fixed;
   top: 0;
@@ -58,14 +58,11 @@ body {
 }
 
 .theme-toggle {
-
   cursor: pointer;
   transition: transform 0.2s;
 }
 
-
-
-/* Footer */
+/* ==================== FOOTER ==================== */
 .footer {
   position: fixed;
   bottom: 0;
@@ -108,7 +105,7 @@ body {
   border-radius: 50%;
 }
 
-/* Layout */
+/* ==================== LAYOUT ==================== */
 .main-layout {
   display: flex;
   gap: 12px;
@@ -123,7 +120,6 @@ body {
   min-width: 0;
 }
 
-/* Panels */
 .progress-panel,
 .container,
 .times-panel,
@@ -252,7 +248,7 @@ input[type="number"] {
   display: none;
 }
 
-/* Times Table */
+/* ==================== TIMES TABLE ==================== */
 #times-table {
   width: 100%;
   border-collapse: collapse;
@@ -275,7 +271,7 @@ input[type="number"] {
   background: var(--muted-bg);
 }
 
-/* Modal */
+/* ==================== MODAL ==================== */
 .modal {
   display: flex;
   position: fixed;
@@ -309,22 +305,21 @@ input[type="number"] {
   color: var(--primary);
 }
 
-/* Responsive */
+/* ==================== RESPONSIVE ==================== */
 @media (max-width: 900px) {
   .main-layout {
     flex-direction: column;
     margin-bottom: 60px;
   }
-
   .main-layout > * {
     min-height: 300px;
   }
-
   h1 { font-size: 1.8em; }
   h2 { font-size: 1.4em; }
   .question { font-size: 1em; }
   button { padding: 8px 14px; font-size: 0.95em; }
 }
+
 @media (max-width: 600px) {
   .header { height: 50px; font-size: 18px; }
   .footer { height: 45px; }
@@ -334,121 +329,133 @@ input[type="number"] {
   h1 { font-size: 1.5em; margin-bottom: 12px; }
   h2 { font-size: 1.2em; }
   .question { font-size: 0.95em; padding: 8px; }
- 
-  input[type="number"]:not(.katakcha)
-    { width: 60px; padding: 6px; font-size: 0.95em; margin: 2px 0; }
+  input[type="number"]:not(.katakcha) { width: 60px; padding: 6px; font-size: 0.95em; margin: 2px 0; }
   button { padding: 6px 12px; font-size: 0.85em; width: 100%; }
 }
 
-       #game {
-            display: flex;
-            flex-wrap: wrap;
-            max-width: 400px;
-            margin-bottom: 20px;
-        }
+/* ==================== GAME STYLING ==================== */
+#game {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
 
-        .letter-box {
-            position: relative;
-            width: 50px;
-            height: 50px;
-            border: 1px solid #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 5px;
-            font-size: 20px;
-            font-weight: bold;
-            user-select: none;
-        }
+.letter-box {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 50px;
+  color: #000;
+  border: 1px solid #333;
+  user-select: none;
+}
 
-        .letter-box span {
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            font-size: 12px;
-            color: #555;
-        }
+.letter-box span {
+  position: absolute;
+  top: 1px;
+  right: 4px;
+  font-size: 12px;
+  color: #555;
+  line-height: normal;
+}
 
-        #result {
-            margin-top: 20px;
-            font-weight: bold;
-            font-size: 18px;
-        }
+.letter-box.active {
+  border: 2px solid green;
+}
 
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-        }
+#numberPad {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 15px;
+}
 
-        input {
-            font-size: 18px;
-            width: 200px;
-            text-align: center;
-        }
+#numberPad button {
+  width: 50px;
+  height: 50px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
-        #resultHarf{
-    margin-top: 15px;
-    font-size: 22px;
-    font-weight: bold;
-    text-align: center;
-    transition: all 0.4s ease;
+button.used {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#resultHarf {
+  margin-top: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.4s ease;
 }
 
 .success{
-    color: #1e7f34;
-    background: linear-gradient(90deg, #a8ff78, #78ffd6);
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,255,0,0.6);
+  color: #1e7f34;
+  background: linear-gradient(90deg, #a8ff78, #78ffd6);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,255,0,0.6);
 }
 
 .error{
-    color: #8b0000;
-    background: linear-gradient(90deg, #ff9a9e, #fad0c4);
-    padding: 10px;
-    border-radius: 10px;
+  color: #8b0000;
+  background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+  padding: 10px;
+  border-radius: 10px;
 }
 
 #confetti{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-.confetti{
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    animation: fall 2s linear forwards;
-}
-@keyframes fall{
-    from{transform: translateY(-10px) rotate(0deg);}
-    to{transform: translateY(100vh) rotate(360deg); opacity:0;}
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
+.confetti{
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  animation: fall 2s linear forwards;
+}
+
+@keyframes fall{
+  from{transform: translateY(-10px) rotate(0deg);}
+  to{transform: translateY(100vh) rotate(360deg); opacity:0;}
+}
 
 .soniya{
-    margin-top: 10px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    color: #0d47a1;
-    background: linear-gradient(90deg,#bbdefb,#e3f2fd);
-    padding: 8px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,255,0.3);
+  margin-top: 10px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #0d47a1;
+  background: linear-gradient(90deg,#bbdefb,#e3f2fd);
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,255,0.3);
 }
 
 .soniya.warning{
-    color: #b71c1c;
-    background: linear-gradient(90deg,#ff8a80,#ffccbc);
-    animation: pulse 0.5s infinite;
+  color: #b71c1c;
+  background: linear-gradient(90deg,#ff8a80,#ffccbc);
+  animation: pulse 0.5s infinite;
 }
 
 @keyframes pulse{
-    0%{transform: scale(1);}
-    50%{transform: scale(1.05);}
-    100%{transform: scale(1);}
+  0%{transform: scale(1);}
+  50%{transform: scale(1.05);}
+  100%{transform: scale(1);}
 }
+/* ==================== ADDITIONAL STYLES FROM styles.css ==================== */

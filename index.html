@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qiziqarli Matematika</title>
-    <link rel="stylesheet" href="sty.css">
+    <link rel="stylesheet" href="sty-2.css">
     <link rel="stylesheet" href="jadval.css">
     <link rel="stylesheet" href="card.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -33,19 +33,22 @@
     <div class="main-layout">
         <!-- Left: Progress Panel -->
         <div id="progress-panel" class="progress-panel">
-            <h3>Mantiqiy Harf O‘yini</h3> 
+            <h3>Mantiqiy Harf O‘yini</h3>
+
             <div id="game"></div>
 
-            <p id="sequence">To‘g‘ri raqam ketma-ketligini kiriting:</p>
-            <input class="katakcha" type="number" id="userInput" placeholder="Masalan: 4721356" maxlength="20">
-            <button id="checkBtn">Tekshirish</button>
+            <div id="numberPad" class="number-pad"></div>
+
             <div id="resultHarf"></div>
             <div id="confetti"></div>
-            <!-- <a class="button" href="krossvord.html">🔤 So‘zlarni tartiblash o‘yini</a> -->
-           
+
+            <button onclick="prepareWord()">🔄 Yangi so‘z</button>
+
 
 
         </div>
+
+
 
         <!-- Center: Quiz Container -->
         <div class="container">
@@ -135,12 +138,13 @@
             });
         })();
     </script>
-    
 
-    
+
+
 
     <script src="script.js"></script>
-    <script src="krossvord.js"></script>
+    <!-- <script src="krossvord.js"></script> -->
+    <script src="harfblok.js"></script>
     <!-- <script src="card.js"></script> -->
     <script type="module" src="firebasedata.js"></script>
 </body>
