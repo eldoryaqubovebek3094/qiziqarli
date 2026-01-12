@@ -331,7 +331,7 @@ input[type="number"] {
   h2 { font-size: 1.2em; }
   .question { font-size: 0.95em; padding: 8px; }
   input[type="number"]
-    { width: 176px; padding: 6px; font-size: 0.95em; margin: 15px 0; }
+    { width: 176px; padding: 6px; font-size: 0.95em; margin: 5px 0; }
   button { padding: 6px 12px; font-size: 0.85em; width: 100%; }
 }
 
