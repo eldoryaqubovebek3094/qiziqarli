@@ -329,11 +329,9 @@ input[type="number"] {
   h1 { font-size: 1.5em; margin-bottom: 12px; }
   h2 { font-size: 1.2em; }
   .question { font-size: 0.95em; padding: 8px; }
-  .katakcha{
-    width: 140px; padding: 6px; font-size: 0.95em; margin: 2px 0;
-  }
+ 
   input[type="number"]
-    { width: auto; padding: 6px; font-size: 0.95em; margin: 2px 0; }
+    { width: 60px; padding: 6px; font-size: 0.95em; margin: 2px 0; }
   button { padding: 6px 12px; font-size: 0.85em; width: 100%; }
 }
 
