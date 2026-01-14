@@ -219,11 +219,12 @@ let wrongGames = 0;
 
 // ==================== FUNKSIYALAR ====================
 function calculateTime(word){
-    let t = Math.round(word.length * 1.2);
-    if(t<5) t=5;
-    if(t>20) t=20;
-    return t;
+  let t = Math.round(word.length * 5); // harfga 2.5 sekund
+  if(t < 10) t = 10;    // minimal vaqt 10s
+  if(t > 40) t = 40;    // maksimal vaqt 40s
+  return t;
 }
+
 
 function startTimer(word){
     clearInterval(timerInterval);

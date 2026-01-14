@@ -10,17 +10,17 @@
     <link rel="stylesheet" href="card.css">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script>
-				// Prevent some default keys (lightweight protection)
-				document.addEventListener("contextmenu", function (event) {
-					event.preventDefault();
-				});
+        // Prevent some default keys (lightweight protection)
+        document.addEventListener("contextmenu", function (event) {
+            event.preventDefault();
+        });
 
-				document.addEventListener("keydown", function (event) {
-					if (event.key === "F12") {
-						event.preventDefault();
-					}
-				});
-			</script>
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "F12") {
+                event.preventDefault();
+            }
+        });
+    </script>
 </head>
 
 <body>
@@ -43,6 +43,36 @@
             <div id="confetti"></div>
 
             <button class="button" onclick="prepareWord()">🔄 Yangi so‘z</button>
+
+            <!-- 🎶 Musiqa player kodini shu yerga joylashtirasan -->
+            <div id="music-player"> <!-- player HTML kodlari -->
+                <h2>🎶Quvnoq Musiqa🎶</h2>
+
+                <audio id="audio" src="music1.mp3" loop></audio>
+
+                <div class="controls">
+                    <button onclick="playMusic()">▶️ Play</button>
+                    <button onclick="pauseMusic()">⏸️ Pause</button>
+                    <button onclick="stopMusic()">⏹️ Stop</button>
+                </div>
+
+                <div class="volume">
+                    <label>🔊 Ovoz
+                        <input type="range" id="volume" min="0" max="1" step="0.1" onchange="setVolume(this.value)">
+                    </label>
+                </div>
+
+                <div class="tracks">
+                    <label>🎼 Musiqa tanlash:</label>
+                    <select id="trackSelect" onchange="changeTrack(this.value)">
+                        <option value="music1.mp3">Raqamlar</option>
+                        <option value="music2.mp3">Raqamlar 2</option>
+                        <option value="music3.mp3">Raqamlar 3</option>
+                    </select>
+                </div>
+
+
+            </div>
 
 
 

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bilimdon Bolajon!</title>
 
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
     <script>
 				// Prevent some default keys (lightweight protection)
 				document.addEventListener("contextmenu", function (event) {
@@ -187,15 +187,23 @@
 
     <script>
         // ==================== THEME TOGGLE ====================
-        const themeBtn = document.getElementById('theme-toggle');
-        themeBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark');
-            if (document.body.classList.contains('dark')) {
-                themeBtn.textContent = '🌞';
-            } else {
-                themeBtn.textContent = '🌙';
+        (function () {
+            const btn = document.getElementById('theme-toggle');
+            const darkClass = 'dark-theme';
+            function applyTheme(dark) {
+                if (dark) document.body.classList.add(darkClass); // ✅ body ga qo‘shildi
+                else document.body.classList.remove(darkClass);
+                if (btn) btn.textContent = dark ? '☀️' : '🌙';
             }
-        });
+            let stored = localStorage.getItem('theme');
+            let isDark = stored ? stored === 'dark' : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            applyTheme(isDark);
+            if (btn) btn.addEventListener('click', () => {
+                isDark = !document.body.classList.contains(darkClass);
+                applyTheme(isDark);
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+        })();
 
         // ==================== SO'ZLAR ====================
         const sentences = [
@@ -328,4 +336,4 @@
 
 </body>
 
-</html>
+</html> 
